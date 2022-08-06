@@ -1,0 +1,39 @@
+<resources>
+
+    <string name="app_name">DEFINEit</string>
+    <string name="app_name_en">DEFINEit Dictionary</string>
+    <string name="me_page">من</string>
+    <string name="learn_page">آموزش</string>
+    <string name="translate_page">ترجمه</string>
+    <string name="search_page">واژه</string>
+    <string name="main_page">صفحه اصلی</string>
+    <string name="search_word">جستوجوی واژه در دیکشنری</string>
+    <string name="search_word2">جستوجوی واژه</string>
+    <string name="persian">فارسی</string>
+    <string name="english">انگلیسی</string>
+    <string name="conversation">مکالمه</string>
+    <string name="typing">تایپ کنید…</string>
+    <string name="settings">تنظیمات</string>
+    <string name="main_settings">تنظیمات عمومی</string>
+    <string name="pick_voice_type">انتخاب نوع صدا</string>
+    <string name="pick_voice_type_description">انتخاب صدای مرد یا زن برای تلفظ کلمات</string>
+    <string name="pick_language">انتخاب زبان</string>
+    <string name="translate_history">تاریخچه ترجمه</string>
+    <string name="word_history">تاریخچه کلمات</string>
+    <string name="word_tagged">کلمات ستاره دار</string>
+    <string name="login">ورود</string>
+    <string name="register">ثبت نام</string>
+    <string name="login_with_email">ورود با ایمیل</string>
+    <string name="login_with_number">ورود با شماره</string>
+    <string name="password">رمز عبور</string>
+    <string name="skip">→ گذشتن</string>
+    <string name="user_namefamily">نام و نام خانوادگی</string>
+    <string name="user_email">ایمیل</string>
+    <string name="user_number">شماره همراه</string>
+    <string name="developer">امیربهادر امیری</string>
+    <string name="developer_gmail">bahadoramiri.report@gmail.com</string>
+    <string name="other_apps">برنامه‌های دیگر</string>
+    <string name="apply">تایید</string>
+    <string name="dismiss">لغو</string>
+
+</resources>

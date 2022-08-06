@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!--    <item-->
+<!--        android:id="@+id/me_page"-->
+<!--        android:icon="@drawable/ic_me"-->
+<!--        android:title="@string/me_page" />-->
+
+    <item
+        android:id="@+id/me_page"
+        android:icon="@drawable/ic_round_person"
+        android:title="درباره‌ی ما" />
+
+    <item
+        android:id="@+id/translate_page"
+        android:icon="@drawable/ic_round_translate"
+        android:title="@string/translate_page" />
+
+    <item
+        android:id="@+id/search_page"
+        android:icon="@drawable/ic_round_search"
+        android:title="@string/search_page" />
+
+    <item
+        android:id="@+id/main_page"
+        android:icon="@drawable/ic_round_home"
+        android:title="@string/main_page" />
+
+</menu>

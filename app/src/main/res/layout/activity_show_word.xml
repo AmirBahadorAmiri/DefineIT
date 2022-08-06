@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/material_alpha_1">
+
+    <View
+        android:id="@+id/view_1"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="@color/white"
+        android:elevation="@dimen/standard_2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_8dp"
+        android:elevation="@dimen/standard_2dp"
+        android:text="@string/app_name_en"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/wordTagged"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/wordTagged"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="@dimen/standard_40dp"
+        android:layout_height="@dimen/standard_40dp"
+        android:layout_marginStart="@dimen/standard_8dp"
+        android:layout_marginTop="@dimen/standard_8dp"
+        android:elevation="@dimen/standard_2dp"
+        android:tint="@color/material_dark_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/ic_round_unfavorite" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/settings"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="@dimen/standard_40dp"
+        android:layout_height="@dimen/standard_40dp"
+        android:layout_marginTop="@dimen/standard_8dp"
+        android:elevation="@dimen/standard_2dp"
+        android:tint="@color/material_dark_2"
+        app:layout_constraintStart_toEndOf="@id/wordTagged"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_round_settings" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/send_speakLogo"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="@dimen/standard_40dp"
+        android:layout_height="@dimen/standard_40dp"
+        android:layout_marginTop="@dimen/standard_8dp"
+        android:elevation="@dimen/standard_2dp"
+        android:tint="@color/material_dark_2"
+        app:layout_constraintEnd_toEndOf="@+id/wordTagged"
+        app:layout_constraintStart_toStartOf="@+id/wordTagged"
+        app:layout_constraintTop_toBottomOf="@+id/wordTagged"
+        app:srcCompat="@drawable/ic_round_volume" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/copyLogo"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="@dimen/standard_40dp"
+        android:layout_height="@dimen/standard_40dp"
+        android:layout_marginTop="@dimen/standard_8dp"
+        android:elevation="@dimen/standard_2dp"
+        android:tint="@color/material_dark_2"
+        app:layout_constraintEnd_toEndOf="@+id/send_speakLogo"
+        app:layout_constraintStart_toStartOf="@+id/send_speakLogo"
+        app:layout_constraintTop_toBottomOf="@+id/send_speakLogo"
+        app:srcCompat="@drawable/ic_round_copy" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/englishWord"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/standard_16dp"
+        android:layout_marginEnd="@dimen/standard_16dp"
+        android:elevation="@dimen/standard_2dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/send_speakLogo"
+        app:layout_constraintEnd_toEndOf="@+id/view_1"
+        app:layout_constraintStart_toEndOf="@+id/send_speakLogo"
+        app:layout_constraintTop_toTopOf="@+id/send_speakLogo"
+        tools:text="TextView" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/persianWord"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/standard_16dp"
+        android:layout_marginEnd="@dimen/standard_16dp"
+        android:elevation="@dimen/standard_2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/copyLogo"
+        app:layout_constraintTop_toTopOf="@+id/copyLogo"
+        app:layout_constraintBottom_toBottomOf="@id/copyLogo"
+        tools:text="TextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
