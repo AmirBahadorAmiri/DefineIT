@@ -76,6 +76,19 @@
         android:layout_margin="@dimen/standard_16dp"
         android:layout_height="wrap_content" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/support_app"
+        android:background="@drawable/bg_white_round_5dp"
+        android:backgroundTint="@color/themeAccentColor"
+        app:layout_constraintTop_toBottomOf="@id/developer_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/support_app"
+        android:textColor="@color/white"
+        android:layout_width="0dp"
+        android:layout_margin="@dimen/standard_16dp"
+        android:layout_height="wrap_content" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/versionInfo"
         android:layout_width="wrap_content"

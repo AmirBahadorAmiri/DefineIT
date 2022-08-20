@@ -166,7 +166,7 @@ public class ConversationActivity extends AppCompatActivity {
 
     private void translate() {
         if (!Objects.requireNonNull(conversation_editText.getText()).toString().isEmpty()) {
-            if ((System.currentTimeMillis() - User.getBuyTime()) <= (1800 * 1000)) {
+            if (User.userCanUseApp()) {
                 googleTranslate();
             } else {
                 DialogManager.showDialog(this, true, "برای استفاده از این بخش باید تبلیغات را تماشا کنید، آیا مایل هستید؟", new DefaultListener() {
@@ -189,14 +189,6 @@ public class ConversationActivity extends AppCompatActivity {
                                 Toast.makeText(ConversationActivity.this, "متاسفانه درخواست شما با مشکل مواجه شد", Toast.LENGTH_SHORT).show();
                             }
                         });
-
-
-                        /*
-                         *
-                         * show ad in this comment
-                         *
-                         *
-                         * */
 
                     }
                 });

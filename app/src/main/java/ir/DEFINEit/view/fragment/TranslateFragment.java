@@ -234,7 +234,7 @@ public class TranslateFragment extends Fragment {
 //                } else {
 
         if (!Objects.requireNonNull(translated_editText.getText()).toString().isEmpty()) {
-            if ((System.currentTimeMillis() - User.getBuyTime()) <= (1800 * 1000)) {
+            if (User.userCanUseApp()) {
                 googleTranslate();
             } else {
                 DialogManager.showDialog(requireContext(), true, "برای استفاده از این بخش باید تبلیغات را تماشا کنید، آیا مایل هستید؟", new DefaultListener() {
@@ -257,14 +257,6 @@ public class TranslateFragment extends Fragment {
                                 Toast.makeText(requireContext(), "متاسفانه درخواست شما با مشکل مواجه شد", Toast.LENGTH_SHORT).show();
                             }
                         });
-
-
-                        /*
-                         *
-                         * show ad in this comment
-                         *
-                         *
-                         * */
 
                     }
                 });
