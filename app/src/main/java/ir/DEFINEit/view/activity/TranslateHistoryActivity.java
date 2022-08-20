@@ -29,7 +29,7 @@ import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import ir.DEFINEit.R;
 import ir.DEFINEit.adapter.TranslateHistoryAdapter;
-import ir.DEFINEit.model.SentenceModel;
+import ir.DEFINEit.model.TextModel;
 import ir.DEFINEit.tools.database.DBM;
 import ir.DEFINEit.tools.dialog_manager.DialogManager;
 import ir.DEFINEit.tools.listeners.DefaultListener;
@@ -39,12 +39,12 @@ public class TranslateHistoryActivity extends AppCompatActivity {
     AppCompatImageButton delete_translated;
     RecyclerView translated_recyclerView;
     TranslateHistoryAdapter translateHistoryAdapter;
-    private List<SentenceModel> sentenceList = new ArrayList<>();
+    private List<TextModel> sentenceList = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_translated_history);
+        setContentView(R.layout.activity_translate_history);
         findViews();
         start();
     }

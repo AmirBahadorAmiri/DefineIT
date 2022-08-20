@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/themeBackgroundColor"
+    tools:targetApi="lollipop">
+
+    <View
+        android:id="@+id/setting_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/standard_50dp"
+        android:background="@color/themeActionBarColor"
+        android:elevation="@dimen/standard_2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/setting_action_bar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/standard_2dp"
+        android:text="@string/app_name_en"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/setting_action_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/search_editText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/standard_50dp"
+        android:layout_marginStart="@dimen/standard_8dp"
+        android:layout_marginTop="@dimen/standard_8dp"
+        android:layout_marginEnd="@dimen/standard_8dp"
+        android:background="@drawable/bg_white_round_5dp"
+        android:backgroundTint="@color/themeActionBarColor"
+        android:elevation="@dimen/standard_2dp"
+        android:gravity="center_vertical"
+        android:hint="@string/search_word"
+        android:paddingStart="48dp"
+        android:paddingEnd="8dp"
+        android:textColorHint="@color/material_alpha_2"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setting_action_bar" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/send_speakLogo"
+        android:layout_width="@dimen/standard_40dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/themeActionBarColor"
+        android:elevation="@dimen/standard_2dp"
+        android:tint="@color/themeAccentColor"
+        app:layout_constraintBottom_toBottomOf="@+id/search_editText"
+        app:layout_constraintStart_toStartOf="@+id/search_editText"
+        app:layout_constraintTop_toTopOf="@+id/search_editText"
+        app:srcCompat="@drawable/ic_round_mic" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/main_fragment_cardview_translate"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_margin="@dimen/standard_8dp"
+        android:backgroundTint="@color/themeAccentColor"
+        android:foreground="?selectableItemBackground"
+        app:cardCornerRadius="@dimen/standard_8dp"
+        app:cardElevation="@dimen/standard_2dp"
+        app:layout_constraintEnd_toStartOf="@+id/main_fragment_cardview_search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_editText" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="@dimen/standard_8dp"
+        android:elevation="@dimen/standard_2dp"
+        android:src="@drawable/translate"
+        app:layout_constraintStart_toStartOf="@id/main_fragment_cardview_translate"
+        app:layout_constraintTop_toTopOf="@id/main_fragment_cardview_translate" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/standard_4dp"
+        android:elevation="@dimen/standard_2dp"
+        android:gravity="bottom"
+        android:padding="@dimen/standard_4dp"
+        android:text="@string/translate_page"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/main_fragment_cardview_translate"
+        app:layout_constraintEnd_toEndOf="@id/main_fragment_cardview_translate"
+        app:layout_constraintStart_toEndOf="@id/img1"
+        app:layout_constraintTop_toTopOf="@id/main_fragment_cardview_translate" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/main_fragment_cardview_search"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_margin="@dimen/standard_8dp"
+        android:backgroundTint="@color/themeAccentColor"
+        android:foreground="?selectableItemBackground"
+        app:cardCornerRadius="@dimen/standard_8dp"
+        app:cardElevation="@dimen/standard_2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/main_fragment_cardview_translate"
+        app:layout_constraintTop_toBottomOf="@id/search_editText" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:elevation="@dimen/standard_2dp"
+        android:paddingTop="@dimen/standard_16dp"
+        android:paddingBottom="@dimen/standard_16dp"
+        android:src="@drawable/dictionary"
+        app:layout_constraintStart_toStartOf="@id/main_fragment_cardview_search"
+        app:layout_constraintTop_toTopOf="@id/main_fragment_cardview_search" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/standard_4dp"
+        android:elevation="@dimen/standard_2dp"
+        android:gravity="bottom"
+        android:padding="@dimen/standard_4dp"
+        android:text="@string/search_page"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/main_fragment_cardview_search"
+        app:layout_constraintEnd_toEndOf="@id/main_fragment_cardview_search"
+        app:layout_constraintStart_toEndOf="@id/img2"
+        app:layout_constraintTop_toTopOf="@id/main_fragment_cardview_search" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/main_fragment_cardview_conversation"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_margin="@dimen/standard_8dp"
+        android:backgroundTint="@color/themeAccentColor"
+        android:foreground="?selectableItemBackground"
+        app:cardCornerRadius="@dimen/standard_8dp"
+        app:cardElevation="@dimen/standard_2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_fragment_cardview_search" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img4"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="@dimen/standard_8dp"
+        android:elevation="@dimen/standard_2dp"
+        android:src="@drawable/conversation"
+        app:layout_constraintStart_toStartOf="@id/main_fragment_cardview_conversation"
+        app:layout_constraintTop_toTopOf="@id/main_fragment_cardview_conversation" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/standard_4dp"
+        android:elevation="@dimen/standard_2dp"
+        android:gravity="bottom"
+        android:padding="@dimen/standard_4dp"
+        android:text="@string/conversation"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/main_fragment_cardview_conversation"
+        app:layout_constraintEnd_toEndOf="@id/main_fragment_cardview_conversation"
+        app:layout_constraintStart_toEndOf="@id/img4"
+        app:layout_constraintTop_toTopOf="@id/main_fragment_cardview_conversation" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

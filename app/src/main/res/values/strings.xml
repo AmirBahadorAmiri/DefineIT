@@ -15,8 +15,8 @@
     <string name="typing">تایپ کنید…</string>
     <string name="settings">تنظیمات</string>
     <string name="main_settings">تنظیمات عمومی</string>
-    <string name="pick_voice_type">انتخاب نوع صدا</string>
-    <string name="pick_voice_type_description">انتخاب صدای مرد یا زن برای تلفظ کلمات</string>
+    <string name="choose_voice_type">انتخاب صدا</string>
+    <string name="choose_voice_type_description">انتخاب صدای مرد یا زن برای تلفظ کلمات</string>
     <string name="pick_language">انتخاب زبان</string>
     <string name="translate_history">تاریخچه ترجمه</string>
     <string name="word_history">تاریخچه کلمات</string>
@@ -30,10 +30,13 @@
     <string name="user_namefamily">نام و نام خانوادگی</string>
     <string name="user_email">ایمیل</string>
     <string name="user_number">شماره همراه</string>
-    <string name="developer">امیربهادر امیری</string>
+    <string name="developer">امیربهادر امیری | AmirBahador Amiri</string>
     <string name="developer_gmail">bahadoramiri.report@gmail.com</string>
     <string name="other_apps">برنامه‌های دیگر</string>
     <string name="apply">تایید</string>
     <string name="dismiss">لغو</string>
+    <string name="choose_app">انتخاب برنامه مورد نظر …</string>
+    <string name="choose_theme_title">انتخاب لایه</string>
+    <string name="choose_theme_subtitle">انتخاب لایه روز یا شب برای برنامه</string>
 
 </resources>

@@ -7,6 +7,7 @@
 
 package ir.DEFINEit.view.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
@@ -23,20 +25,23 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import ir.DEFINEit.R;
+import ir.DEFINEit.tools.dialog_manager.DialogManager;
+import ir.DEFINEit.tools.listeners.DefaultListener;
 import ir.DEFINEit.tools.packager.Packager;
-import ir.DEFINEit.view.activity.MainActivity;
 import ir.DEFINEit.view.activity.SettingsActivity;
 
+@SuppressLint("IntentReset")
 public class MeFragment extends Fragment {
 
-    AppCompatImageButton drawerLogo, settings;
+    AppCompatButton developer_button;
+    AppCompatImageButton settings;
     FloatingActionButton other_apps, developer_gmail, telegram_channel;
     AppCompatTextView versionInfo;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.main_me_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_me, container, false);
     }
 
     @Override
@@ -47,16 +52,15 @@ public class MeFragment extends Fragment {
     }
 
     private void findViews(View view) {
-        drawerLogo = view.findViewById(R.id.drawerLogo);
         settings = view.findViewById(R.id.settings);
         other_apps = view.findViewById(R.id.other_apps);
         developer_gmail = view.findViewById(R.id.developer_gmail);
         telegram_channel = view.findViewById(R.id.telegram_channel);
         versionInfo = view.findViewById(R.id.versionInfo);
+        developer_button = view.findViewById(R.id.developer_button);
     }
 
     private void start() {
-        drawerLogo.setOnClickListener(n -> ((MainActivity) requireActivity()).openDrawer(true));
         settings.setOnClickListener(n -> startActivity(new Intent(requireActivity(), SettingsActivity.class)));
         String version = "نگارش " + Packager.getVersionName(requireContext());
         versionInfo.setText(version);
@@ -66,10 +70,26 @@ public class MeFragment extends Fragment {
             intent.setType("message/rfc822");
             intent.putExtra(Intent.EXTRA_EMAIL, new String[]{getString(R.string.developer_gmail)});
             intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
-            startActivity(Intent.createChooser(intent, "انتخاب برنامه مورد نظر ..."));
+            startActivity(Intent.createChooser(intent, getString(R.string.choose_app)));
         });
-        other_apps.setOnClickListener(view -> startActivity(Intent.createChooser(new Intent(Intent.ACTION_VIEW, Uri.parse("http://myket.ir/developer/dev-55536/apps?lang=fa")), "انتخاب برنامه مورد نظر ...")));
-        telegram_channel.setOnClickListener(view -> startActivity(Intent.createChooser(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/AmirBahadorAmiri")), "انتخاب برنامه مورد نظر ...")));
+        developer_button.setOnClickListener(view -> startActivity(Intent.createChooser(new Intent(Intent.ACTION_VIEW, Uri.parse("http://myket.ir/developer/dev-55536/apps?lang=fa")), getString(R.string.choose_app))));
+        other_apps.setOnClickListener(view -> startActivity(Intent.createChooser(new Intent(Intent.ACTION_VIEW, Uri.parse("http://myket.ir/developer/dev-55536/apps?lang=fa")), getString(R.string.choose_app))));
+        telegram_channel.setOnClickListener(view -> startActivity(Intent.createChooser(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/AmirBahadorAmiri")), getString(R.string.choose_app))));
+    }
+
+    private void bugDialog() {
+        DialogManager.showMsgDialog(requireContext(), true, "گزارش مشکل", "مشکل خود را بنویسید …", new DefaultListener() {
+            @Override
+            public void onSuccess(String str) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setData(Uri.parse("email"));
+                intent.setType("message/rfc822");
+                intent.putExtra(Intent.EXTRA_TEXT, str);
+                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{getString(R.string.developer_gmail)});
+                startActivity(Intent.createChooser(intent, "انتخاب برنامه مورد نظر ..."));
+            }
+        });
     }
 
 }

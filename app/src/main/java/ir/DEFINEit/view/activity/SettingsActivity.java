@@ -9,41 +9,56 @@ package ir.DEFINEit.view.activity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 import ir.DEFINEit.R;
 import ir.DEFINEit.tools.tts.TTsSingle;
+import ir.DEFINEit.tools.user_info.User;
 
 public class SettingsActivity extends AppCompatActivity {
-
-    View selectGenderView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        findViews();
         start();
 
     }
 
-    public void findViews() {
-        selectGenderView = findViewById(R.id.selectGenderView);
-    }
-
     public void start() {
-        selectGenderView.setOnClickListener(v -> {
 
+        findViewById(R.id.selectThemeView).setOnClickListener(v -> {
+            AlertDialog.Builder chooseGender = new AlertDialog.Builder(this);
+            String[] item = new String[]{"روز", "شب"};
+            short isMan = (short) (User.isDarkTheme() ?1:0);
+            chooseGender.setSingleChoiceItems(item, isMan, (dialog, which) -> {
+                switch (which) {
+                    case 0:
+                        User.setDarkTheme(false);
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                        break;
+                    case 1:
+                        User.setDarkTheme(true);
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                        break;
+                }
+                dialog.dismiss();
+            });
+            chooseGender.setNegativeButton("لغو", (dialog, which) -> {
+            });
+            chooseGender.show();
+        });
+
+        findViewById(R.id.selectGenderView).setOnClickListener(v -> {
             AlertDialog.Builder chooseGender = new AlertDialog.Builder(this);
             String[] item = new String[]{"آقا", "خانم"};
-            short isMan = 0;
-            if (!TTsSingle.isMan()) isMan = 1;
+            short isMan = (short) (TTsSingle.isMan()?0:1);
             chooseGender.setSingleChoiceItems(item, isMan, (dialog, which) -> {
                 switch (which) {
                     case 0:
@@ -55,10 +70,8 @@ public class SettingsActivity extends AppCompatActivity {
                 }
                 dialog.dismiss();
             });
-            chooseGender.setNegativeButton("لغو", (dialog, which) -> {
-            });
+            chooseGender.setNegativeButton("لغو", (dialog, which) -> {});
             chooseGender.show();
-
         });
     }
 

@@ -25,21 +25,21 @@ import io.reactivex.rxjava3.core.CompletableObserver;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import ir.DEFINEit.R;
-import ir.DEFINEit.model.SentenceModel;
+import ir.DEFINEit.model.TextModel;
 import ir.DEFINEit.tools.database.DBM;
 
 public class TranslateHistoryAdapter extends RecyclerView.Adapter<TranslateHistoryAdapter.TranslatedTextHolder> {
 
-    private List<SentenceModel> sentenceModels;
+    private List<TextModel> textModels;
 
-    public TranslateHistoryAdapter(List<SentenceModel> sentenceModels) {
-        this.sentenceModels = sentenceModels;
+    public TranslateHistoryAdapter(List<TextModel> textModels) {
+        this.textModels = textModels;
     }
 
     @NonNull
     @Override
     public TranslatedTextHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new TranslatedTextHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.translated_history_item, parent, false));
+        return new TranslatedTextHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_translate_history, parent, false));
     }
 
     @Override
@@ -49,7 +49,7 @@ public class TranslateHistoryAdapter extends RecyclerView.Adapter<TranslateHisto
 
     @Override
     public int getItemCount() {
-        return sentenceModels.size();
+        return textModels.size();
     }
 
     public class TranslatedTextHolder extends RecyclerView.ViewHolder {
@@ -63,8 +63,8 @@ public class TranslateHistoryAdapter extends RecyclerView.Adapter<TranslateHisto
         }
 
         private void bindHolder(View itemView, int position) {
-            translated_history_from.setText(sentenceModels.get(position).getSegment());
-            translated_history_to.setText(sentenceModels.get(position).getTranslation());
+            translated_history_from.setText(textModels.get(position).getText());
+            translated_history_to.setText(textModels.get(position).getTranslation());
 
             itemView.setOnClickListener(n -> {
 
@@ -76,7 +76,7 @@ public class TranslateHistoryAdapter extends RecyclerView.Adapter<TranslateHisto
                 popupMenu.setOnMenuItemClickListener(item -> {
 
                     if (item.getItemId() == 0) {
-                        DBM.getDB(v.getContext()).getSentenceDao().delete(sentenceModels.get(position))
+                        DBM.getDB(v.getContext()).getSentenceDao().delete(textModels.get(position))
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(new CompletableObserver() {
@@ -88,7 +88,7 @@ public class TranslateHistoryAdapter extends RecyclerView.Adapter<TranslateHisto
                                     @Override
                                     public void onComplete() {
                                         Toast.makeText(v.getContext(), "از تاریخچه پاک شد", Toast.LENGTH_SHORT).show();
-                                        sentenceModels.remove(position);
+                                        textModels.remove(position);
                                         notifyItemRemoved(position);
                                         notifyItemRangeChanged(position, getItemCount());
                                     }

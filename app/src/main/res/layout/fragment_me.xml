@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:targetApi="lollipop"
+    android:background="@color/themeBackgroundColor">
+
+    <View
+        android:id="@+id/setting_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/standard_50dp"
+        android:background="@color/themeActionBarColor"
+        android:elevation="@dimen/standard_2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/setting_action_bar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/standard_2dp"
+        android:text="@string/app_name_en"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/setting_action_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/settings"
+        android:backgroundTint="@color/themeActionBarColor"
+        android:layout_width="@dimen/standard_40dp"
+        android:layout_height="@dimen/standard_40dp"
+        android:layout_marginStart="@dimen/standard_8dp"
+        android:elevation="@dimen/standard_2dp"
+        android:tint="@color/themeAccentColor"
+        app:layout_constraintBottom_toBottomOf="@+id/setting_action_bar"
+        app:layout_constraintStart_toStartOf="@+id/setting_action_bar"
+        app:layout_constraintTop_toTopOf="@+id/setting_action_bar"
+        app:srcCompat="@drawable/ic_round_settings" />
+
+    <View
+        android:id="@+id/view_2"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:background="@color/themeActionBarColor"
+        android:elevation="@dimen/standard_2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setting_action_bar" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:elevation="@dimen/standard_2dp"
+        android:src="@drawable/ic_launcher"
+        app:layout_constraintTop_toTopOf="@id/view_2"
+        app:layout_constraintBottom_toBottomOf="@id/view_2"
+        app:layout_constraintEnd_toEndOf="@id/view_2"
+        app:layout_constraintStart_toStartOf="@id/view_2"
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/developer_button"
+        android:background="@drawable/bg_white_round_5dp"
+        android:backgroundTint="@color/themeAccentColor"
+        app:layout_constraintTop_toBottomOf="@id/view_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/developer"
+        android:textColor="@color/white"
+        android:layout_width="0dp"
+        android:layout_margin="@dimen/standard_16dp"
+        android:layout_height="wrap_content" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/versionInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/standard_8dp"
+        android:layout_marginBottom="@dimen/standard_8dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="version 1.0" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        app:backgroundTint="@color/material_red_2"
+        android:id="@+id/developer_gmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/standard_8dp"
+        android:layout_marginBottom="@dimen/standard_8dp"
+        android:src="@drawable/ic_round_email"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        app:backgroundTint="@color/material_lightblue_2"
+        android:id="@+id/telegram_channel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/standard_8dp"
+        android:src="@drawable/ic_round_telegram"
+        app:layout_constraintBottom_toBottomOf="@id/developer_gmail"
+        app:layout_constraintStart_toEndOf="@id/developer_gmail"
+        app:layout_constraintTop_toTopOf="@id/developer_gmail" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        app:backgroundTint="@color/material_orange_1"
+        android:id="@+id/other_apps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/standard_8dp"
+        app:layout_constraintBottom_toBottomOf="@id/developer_gmail"
+        app:layout_constraintStart_toEndOf="@id/telegram_channel"
+        app:layout_constraintTop_toTopOf="@id/developer_gmail"
+        android:src="@drawable/ic_round_apps" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

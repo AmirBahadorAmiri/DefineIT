@@ -47,7 +47,7 @@ public class WordHistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new WordHistoryHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.word_history_item, parent, false));
+        return new WordHistoryHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_word_history, parent, false));
     }
 
     @Override

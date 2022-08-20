@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:layout_marginStart="@dimen/standard_8dp"
+    android:layout_marginTop="@dimen/standard_4dp"
+    android:layout_marginEnd="@dimen/standard_8dp"
+    android:layout_marginBottom="@dimen/standard_4dp"
+    android:backgroundTint="@color/themeActionBarColor"
+    android:foreground="?selectableItemBackground"
+    android:orientation="horizontal"
+    app:cardCornerRadius="@dimen/standard_8dp"
+    tools:targetApi="lollipop">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/translate_change_item_imageView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="8dp"
+            tools:src="@drawable/ic_round_telegram" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/translate_change_item_textView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center_vertical"
+            android:padding="8dp"
+            android:textStyle="bold"
+            tools:text="@string/app_name" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.cardview.widget.CardView>

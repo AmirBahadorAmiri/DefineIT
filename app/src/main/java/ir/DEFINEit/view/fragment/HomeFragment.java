@@ -26,7 +26,6 @@ import ir.DEFINEit.view.activity.MainActivity;
 
 public class HomeFragment extends Fragment {
 
-    private AppCompatImageButton drawerLogo;
     private AppCompatButton search_editText;
     private AppCompatImageButton send_speakLogo;
     private CardView main_fragment_cardview_translate, main_fragment_cardview_search, main_fragment_cardview_conversation;
@@ -35,7 +34,7 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.main_home_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
     @Override
@@ -48,7 +47,6 @@ public class HomeFragment extends Fragment {
     }
 
     private void findViews(View view) {
-        drawerLogo = view.findViewById(R.id.drawerLogo);
         search_editText = view.findViewById(R.id.search_editText);
         send_speakLogo = view.findViewById(R.id.send_speakLogo);
         main_fragment_cardview_translate = view.findViewById(R.id.main_fragment_cardview_translate);
@@ -58,14 +56,6 @@ public class HomeFragment extends Fragment {
     }
 
     private void start() {
-        drawerLogo.setOnClickListener(n -> ((MainActivity) requireActivity()).openDrawer(true));
-
-        /*vipLogo.setOnClickListener(view -> {
-
-            Toast.makeText(requireContext(), "buy application from *", Toast.LENGTH_SHORT).show();
-
-        });*/
-
         search_editText.setOnClickListener(v -> ((MainActivity) requireContext()).main_bottom_nav.setSelectedItemId(R.id.search_page));
         send_speakLogo.setOnClickListener(v -> ((MainActivity) requireContext()).main_bottom_nav.setSelectedItemId(R.id.search_page));
         main_fragment_cardview_conversation.setOnClickListener(view -> startActivity(new Intent(requireContext(), ConversationActivity.class)));

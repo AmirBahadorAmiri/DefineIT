@@ -4,44 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/material_alpha_1"
+    android:background="@color/themeBackgroundColor"
     tools:targetApi="lollipop">
 
     <View
-        android:id="@+id/view_1"
+        android:id="@+id/setting_action_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/standard_50dp"
-        android:background="@color/white"
+        android:background="@color/themeActionBarColor"
         android:elevation="@dimen/standard_2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView"
+        android:id="@+id/setting_action_bar_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elevation="@dimen/standard_2dp"
         android:text="@string/word_tagged"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/view_1"
+        app:layout_constraintBottom_toBottomOf="@+id/setting_action_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/delete_tagged"
-        style="@style/Widget.AppCompat.Button.Borderless"
+        android:backgroundTint="@color/themeActionBarColor"
         android:layout_width="@dimen/standard_40dp"
         android:layout_height="@dimen/standard_40dp"
         android:layout_marginStart="@dimen/standard_8dp"
         android:elevation="@dimen/standard_2dp"
         android:src="@drawable/ic_round_delete"
-        android:tint="@color/material_dark_2"
-        app:layout_constraintBottom_toBottomOf="@id/view_1"
+        android:tint="@color/themeAccentColor"
+        app:layout_constraintBottom_toBottomOf="@id/setting_action_bar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tagged_recyclerView"
@@ -50,6 +49,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_1" />
+        app:layout_constraintTop_toBottomOf="@+id/setting_action_bar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

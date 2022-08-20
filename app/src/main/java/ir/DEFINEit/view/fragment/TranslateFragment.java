@@ -42,7 +42,7 @@ import java.util.Objects;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import ir.DEFINEit.R;
-import ir.DEFINEit.model.SentenceModel;
+import ir.DEFINEit.model.TextModel;
 import ir.DEFINEit.tools.copy_helper.CopyHelper;
 import ir.DEFINEit.tools.database.DBM;
 import ir.DEFINEit.tools.dialog_manager.DialogManager;
@@ -55,7 +55,6 @@ import ir.DEFINEit.tools.user_info.User;
 import ir.DEFINEit.tools.web_api.WebApi;
 import ir.DEFINEit.view.activity.ChangeLanguageActivity;
 import ir.DEFINEit.view.activity.ConversationActivity;
-import ir.DEFINEit.view.activity.MainActivity;
 import ir.DEFINEit.view.activity.TranslateHistoryActivity;
 import ir.tapsell.plus.AdShowListener;
 import ir.tapsell.plus.model.TapsellPlusAdModel;
@@ -66,14 +65,14 @@ public class TranslateFragment extends Fragment {
 
     private AppCompatEditText translated_editText;
     private AppCompatTextView translated_result;
-    private AppCompatImageButton conversationLogo, mic_logo, clearLogo, drawerLogo, send_speakLogo, historyLogo, translate_reverse_language, copy_text, share_text;
+    private AppCompatImageButton conversationLogo, mic_logo, clearLogo, send_speakLogo, historyLogo, translate_reverse_language, copy_text, share_text;
     private AppCompatButton translate_from, translate_to;
     private ScrollView translated_scrollView;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.main_translate_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_translate, container, false);
     }
 
     @Override
@@ -88,7 +87,6 @@ public class TranslateFragment extends Fragment {
         translated_editText = view.findViewById(R.id.translated_editText);
         translated_result = view.findViewById(R.id.translated_result);
         translated_scrollView = view.findViewById(R.id.translated_scrollView);
-        drawerLogo = view.findViewById(R.id.drawerLogo);
         send_speakLogo = view.findViewById(R.id.send_speakLogo);
         historyLogo = view.findViewById(R.id.historyLogo);
         translate_from = view.findViewById(R.id.translate_from);
@@ -107,7 +105,6 @@ public class TranslateFragment extends Fragment {
         getLanguages();
 
         historyLogo.setOnClickListener(n -> startActivity(new Intent(getActivity(), TranslateHistoryActivity.class)));
-        drawerLogo.setOnClickListener(n -> ((MainActivity) requireActivity()).openDrawer(true));
 
         mic_logo.setOnClickListener(v -> {
 
@@ -127,21 +124,7 @@ public class TranslateFragment extends Fragment {
                     }
                 });
 
-//                if (TTsSingle.initialize(requireContext())) {
-//                    TTsSingle.speak(translated_result.getText().toString());
-//                } else {
-//                    Toast.makeText(requireActivity(), "زبان ورودی پشتیبانی نمیشود", Toast.LENGTH_SHORT).show();
-//                    /*
-//                     *
-//                     *
-//                     * edit this page
-//                     *
-//                     *
-//                     *
-//                     * */
-//                }
             }
-
 
         });
 
@@ -319,9 +302,9 @@ public class TranslateFragment extends Fragment {
                         }
 
                         translated_result.setText(sb.toString());
-//
+
                         DBM.getDB(requireActivity()).getSentenceDao()
-                                .insert(new SentenceModel(translated_editText.getText().toString(), sb.toString(), new Date()))
+                                .insert(new TextModel(translated_editText.getText().toString(), sb.toString(), new Date()))
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe();

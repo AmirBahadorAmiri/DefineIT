@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+<!--  LIGHT theme color  -->
+    <color name="themeBackgroundColor">#eee</color>
+    <color name="themeActionBarColor">#fff</color>
+    <color name="themePrimaryColor">#039BE5</color>
+    <color name="themePrimaryDarkColor">#1976D2</color>
+    <color name="themeAccentColor">#22A9E6</color>
+    <color name="themeTextColor">#000</color>
+    <color name="themeHintTextColor">#bbb</color>
+
+
+
+
+
     <!-- Material Color -->
 
     <color name="material_green_1">#81C784</color>

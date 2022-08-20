@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/themeBackgroundColor"
+    tools:targetApi="lollipop">
+
+    <View
+        android:id="@+id/setting_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@color/themeActionBarColor"
+        android:elevation="@dimen/standard_2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/setting_action_bar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/standard_2dp"
+        android:text="@string/search_word2"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/wordTagged"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/wordTagged" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/wordTagged"
+        android:layout_width="@dimen/standard_40dp"
+        android:layout_height="@dimen/standard_40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10.5dp"
+        android:backgroundTint="@color/themeActionBarColor"
+        android:elevation="@dimen/standard_2dp"
+        android:tint="@color/themeAccentColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_round_favorite" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/historyLogo"
+        android:layout_width="@dimen/standard_40dp"
+        android:layout_height="@dimen/standard_40dp"
+        android:backgroundTint="@color/themeActionBarColor"
+        android:elevation="@dimen/standard_2dp"
+        android:tint="@color/themeAccentColor"
+        app:layout_constraintBottom_toBottomOf="@+id/wordTagged"
+        app:layout_constraintStart_toEndOf="@+id/wordTagged"
+        app:layout_constraintTop_toTopOf="@+id/wordTagged"
+        app:srcCompat="@drawable/ic_round_history" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/settings"
+        android:layout_width="@dimen/standard_40dp"
+        android:layout_height="@dimen/standard_40dp"
+        android:backgroundTint="@color/themeActionBarColor"
+        android:elevation="@dimen/standard_2dp"
+        android:tint="@color/themeAccentColor"
+        app:layout_constraintBottom_toBottomOf="@+id/wordTagged"
+        app:layout_constraintStart_toEndOf="@+id/historyLogo"
+        app:layout_constraintTop_toTopOf="@+id/wordTagged"
+        app:srcCompat="@drawable/ic_round_settings" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/search_editText"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_white_round_5dp"
+        android:backgroundTint="@android:color/transparent"
+        android:elevation="@dimen/standard_2dp"
+        android:gravity="center_vertical"
+        android:hint="@string/search_word"
+        android:inputType="text"
+        android:paddingStart="48dp"
+        android:paddingEnd="8dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/setting_action_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/send_speak_clearLogo"
+        android:layout_width="@dimen/standard_40dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/themeActionBarColor"
+        android:elevation="@dimen/standard_2dp"
+        android:tint="@color/themeAccentColor"
+        app:layout_constraintBottom_toBottomOf="@+id/search_editText"
+        app:layout_constraintStart_toStartOf="@+id/search_editText"
+        app:layout_constraintTop_toTopOf="@+id/search_editText"
+        app:srcCompat="@drawable/ic_round_mic" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setting_action_bar" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/search_not_found"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="کلمه‌ی مورد نظر یافت نشد"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setting_action_bar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

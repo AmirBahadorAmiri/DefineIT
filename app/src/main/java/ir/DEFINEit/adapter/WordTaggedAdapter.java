@@ -50,7 +50,7 @@ public class WordTaggedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new WordTaggedHolder(LayoutInflater.from(context).inflate(R.layout.word_tagged_item, parent, false));
+        return new WordTaggedHolder(LayoutInflater.from(context).inflate(R.layout.item_word_tagged, parent, false));
     }
 
     @Override

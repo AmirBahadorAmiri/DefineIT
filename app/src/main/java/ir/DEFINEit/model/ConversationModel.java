@@ -9,7 +9,7 @@ package ir.DEFINEit.model;
 
 public class ConversationModel {
 
-    String text, translate;
+    String text, translate, fromLanguageCode, toLanguageCode;
 
     public String getText() {
         return text;
@@ -25,5 +25,21 @@ public class ConversationModel {
 
     public void setTranslate(String translate) {
         this.translate = translate;
+    }
+
+    public String getFromLanguageCode() {
+        return fromLanguageCode;
+    }
+
+    public void setFromLanguageCode(String fromLanguageCode) {
+        this.fromLanguageCode = fromLanguageCode;
+    }
+
+    public String getToLanguageCode() {
+        return toLanguageCode;
+    }
+
+    public void setToLanguageCode(String toLanguageCode) {
+        this.toLanguageCode = toLanguageCode;
     }
 }

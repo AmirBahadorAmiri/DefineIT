@@ -22,7 +22,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageButton;
-import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -52,8 +51,7 @@ import retrofit2.Response;
 public class ConversationActivity extends AppCompatActivity {
 
     private AppCompatButton translate_from, translate_to;
-    private AppCompatImageView conversation_mic_send;
-    private AppCompatImageButton translate_reverse_language, clearLogo;
+    private AppCompatImageButton translate_reverse_language, clearLogo, conversation_mic_send;
     private RecyclerView conversation_recyclerView;
     private ConversationAdapter conversationAdapter;
     private AppCompatEditText conversation_editText;
@@ -209,27 +207,25 @@ public class ConversationActivity extends AppCompatActivity {
     private void googleTranslate() {
         ConversationModel model = new ConversationModel();
         model.setText(Objects.requireNonNull(conversation_editText.getText()).toString());
+        model.setFromLanguageCode(LanguageManager.getFromLangaugeCode());
+        model.setToLanguageCode(LanguageManager.getToLangaugeCode());
         conversation_editText.setText("");
         WebApi.translateText(model.getText(), new DefaultListener() {
             @Override
             public void onSuccess(Response<ResponseBody> response) {
                 try {
                     if (response.body() != null) {
-
                         String result = response.body().string();
-
                         JSONArray object = new JSONArray(result);
                         JSONArray object_0 = object.getJSONArray(0);
                         JSONArray object_1 = object_0.getJSONArray(0);
                         StringBuilder sb = new StringBuilder();
-
                         sb.append(object_1.getString(0));
                         if (!object_0.isNull(1)) {
                             if (!object_0.getJSONArray(1).isNull(0)) {
                                 sb.append(object_0.getJSONArray(1).getString(0));
                             }
                         }
-
                         model.setTranslate(sb.toString());
                         conversationList.add(model);
                         conversationAdapter.notifyItemInserted(conversationList.size() - 1);
@@ -239,14 +235,12 @@ public class ConversationActivity extends AppCompatActivity {
                     Toast.makeText(ConversationActivity.this, "متاسفانه مشکلی در برقراری ارتباط پیش آمد", Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(Throwable throwable) {
                 Toast.makeText(ConversationActivity.this, "متاسفانه مشکلی در برقراری ارتباط پیش آمد", Toast.LENGTH_SHORT).show();
             }
         });
     }
-
 
     @Override
     protected void attachBaseContext(Context newBase) {

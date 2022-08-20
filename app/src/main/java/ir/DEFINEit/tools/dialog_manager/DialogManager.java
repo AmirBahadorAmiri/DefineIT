@@ -60,7 +60,7 @@ public class DialogManager {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().getDecorView().setBackgroundColor(Color.TRANSPARENT);
         dialog.setCancelable(cancelable);
-        dialog.setContentView(R.layout.msg_dialog);
+        dialog.setContentView(R.layout.dialog_message);
         AppCompatTextView msg_dialog_title = dialog.findViewById(R.id.msg_dialog_title);
         AppCompatEditText msg_dialog_edit = dialog.findViewById(R.id.msg_dialog_edit);
         AppCompatButton apply = dialog.findViewById(R.id.apply);

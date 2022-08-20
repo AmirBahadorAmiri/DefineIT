@@ -41,7 +41,7 @@ public class WordSearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new WordSearchHolder(LayoutInflater.from(context).inflate(R.layout.word_search_item, parent, false));
+        return new WordSearchHolder(LayoutInflater.from(context).inflate(R.layout.item_word_search, parent, false));
     }
 
     @Override

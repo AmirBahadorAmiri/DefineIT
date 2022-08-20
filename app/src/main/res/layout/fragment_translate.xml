@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:targetApi="lollipop"
+    android:background="@color/themeBackgroundColor">
+
+    <LinearLayout
+        android:id="@+id/linear_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/themeActionBarColor"
+        android:elevation="@dimen/standard_2dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/translate_from"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                tools:text="@string/persian" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/translate_reverse_language"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_round_arrow_right"
+                android:tint="@color/themeAccentColor" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/translate_to"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                tools:text="@string/english" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/clearLogo"
+                    android:backgroundTint="@color/themeActionBarColor"
+                    android:layout_width="@dimen/standard_40dp"
+                    android:layout_height="@dimen/standard_40dp"
+                    android:src="@drawable/ic_round_clear"
+                    android:tint="@color/themeAccentColor"
+                    android:visibility="gone" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/translated_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:gravity="center_vertical"
+                    android:hint="تایپ کنید..."
+                    android:maxHeight="110dp"
+                    android:minHeight="54dp"
+                    android:padding="16dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/send_speakLogo"
+                android:backgroundTint="@color/themeActionBarColor"
+                android:layout_width="@dimen/standard_40dp"
+                android:layout_height="@dimen/standard_40dp"
+                android:src="@drawable/ic_round_mic"
+                android:tint="@color/themeAccentColor" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/setting_action_bar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/standard_2dp"
+        android:text="@string/translate_page"
+        android:layout_marginTop="10.5dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/historyLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/historyLogo"
+        android:backgroundTint="@color/themeActionBarColor"
+        android:layout_width="@dimen/standard_40dp"
+        android:layout_height="@dimen/standard_40dp"
+        android:layout_marginStart="@dimen/standard_8dp"
+        android:layout_marginTop="10.5dp"
+        android:elevation="@dimen/standard_2dp"
+        android:src="@drawable/ic_round_history"
+        android:tint="@color/themeAccentColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linear_1" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/conversationLogo"
+        android:backgroundTint="@color/themeActionBarColor"
+        android:layout_width="@dimen/standard_40dp"
+        android:layout_height="@dimen/standard_40dp"
+        android:layout_marginStart="@dimen/standard_8dp"
+        android:elevation="@dimen/standard_2dp"
+        android:src="@drawable/ic_round_conversation"
+        android:tint="@color/themeAccentColor"
+        app:layout_constraintStart_toEndOf="@id/historyLogo"
+        app:layout_constraintTop_toTopOf="@+id/historyLogo" />
+
+    <ScrollView
+        android:id="@+id/translated_scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/bg_white_round_5dp"
+        android:backgroundTint="@color/themeActionBarColor"
+        android:elevation="@dimen/standard_2dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/copy_text"
+        app:layout_constraintTop_toBottomOf="@+id/linear_1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/standard_16dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/translated_result"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textIsSelectable="true"
+                tools:text="@string/app_name" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/mic_logo"
+        android:backgroundTint="@android:color/transparent"
+        android:layout_width="@dimen/standard_40dp"
+        android:layout_height="@dimen/standard_40dp"
+        android:layout_margin="@dimen/standard_8dp"
+        android:src="@drawable/ic_round_volume"
+        android:tint="@color/themeAccentColor"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/translated_scrollView" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/copy_text"
+        android:backgroundTint="@android:color/transparent"
+        android:layout_width="@dimen/standard_40dp"
+        android:layout_height="@dimen/standard_40dp"
+        android:layout_margin="@dimen/standard_8dp"
+        android:src="@drawable/ic_round_copy"
+        android:tint="@color/themeAccentColor"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mic_logo" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/share_text"
+        android:backgroundTint="@android:color/transparent"
+        android:layout_width="@dimen/standard_40dp"
+        android:layout_height="@dimen/standard_40dp"
+        android:layout_margin="@dimen/standard_8dp"
+        android:src="@drawable/ic_round_share"
+        android:tint="@color/themeAccentColor"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/copy_text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

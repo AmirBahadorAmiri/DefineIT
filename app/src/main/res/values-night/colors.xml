@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  DARK theme color  -->
+    <color name="themeBackgroundColor">#444</color>
+    <color name="themeActionBarColor">#333</color>
+    <color name="themePrimaryColor">#F61756</color>
+    <color name="themePrimaryDarkColor">#C3083D</color>
+    <color name="themeAccentColor">#F61756</color>
+    <color name="themeTextColor">#fff</color>
+    <color name="themeHintTextColor">#bbb</color>
+
+</resources>

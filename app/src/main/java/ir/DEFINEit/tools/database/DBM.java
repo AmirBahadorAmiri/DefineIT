@@ -16,10 +16,10 @@ import androidx.room.RoomDatabase;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import ir.DEFINEit.model.SentenceModel;
+import ir.DEFINEit.model.TextModel;
 import ir.DEFINEit.model.WordSearchModel;
 
-@Database(entities = {WordSearchModel.class, SentenceModel.class}, version = 3, exportSchema = false)
+@Database(entities = {WordSearchModel.class, TextModel.class}, version = 3, exportSchema = false)
 public abstract class DBM extends RoomDatabase {
 
     private static DBM DBM;
@@ -94,6 +94,6 @@ public abstract class DBM extends RoomDatabase {
 
     public abstract WordDao getWordDao();
 
-    public abstract SentenceDao getSentenceDao();
+    public abstract TextDao getSentenceDao();
 
 }

@@ -31,6 +31,14 @@ public class User {
         return SharedSingle.getSharedHelper().readLong(StaticDatas.USER_BUY_TIME);
     }
 
+    public static void setDarkTheme(boolean isDark) {
+        SharedSingle.getSharedHelper().insert(StaticDatas.USER_DARK_THEME, isDark);
+    }
+
+    public static boolean isDarkTheme() {
+        return SharedSingle.getSharedHelper().readBoolean(StaticDatas.USER_DARK_THEME);
+    }
+
 //
 //    public static boolean getUserSkip() {
 //        return SharedSingle.getSharedHelper().readBoolean(StaticDatas.USER_SKIP);
