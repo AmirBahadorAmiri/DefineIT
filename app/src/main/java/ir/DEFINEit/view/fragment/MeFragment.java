@@ -64,14 +64,7 @@ public class MeFragment extends Fragment {
         settings.setOnClickListener(n -> startActivity(new Intent(requireActivity(), SettingsActivity.class)));
         String version = "نگارش " + Packager.getVersionName(requireContext());
         versionInfo.setText(version);
-        developer_gmail.setOnClickListener(view -> {
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.setData(Uri.parse("email"));
-            intent.setType("message/rfc822");
-            intent.putExtra(Intent.EXTRA_EMAIL, new String[]{getString(R.string.developer_gmail)});
-            intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
-            startActivity(Intent.createChooser(intent, getString(R.string.choose_app)));
-        });
+        developer_gmail.setOnClickListener(view -> bugDialog());
         developer_button.setOnClickListener(view -> startActivity(Intent.createChooser(new Intent(Intent.ACTION_VIEW, Uri.parse("http://myket.ir/developer/dev-55536/apps?lang=fa")), getString(R.string.choose_app))));
         other_apps.setOnClickListener(view -> startActivity(Intent.createChooser(new Intent(Intent.ACTION_VIEW, Uri.parse("http://myket.ir/developer/dev-55536/apps?lang=fa")), getString(R.string.choose_app))));
         telegram_channel.setOnClickListener(view -> startActivity(Intent.createChooser(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/AmirBahadorAmiri")), getString(R.string.choose_app))));
