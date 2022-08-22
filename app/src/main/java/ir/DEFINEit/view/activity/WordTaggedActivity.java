@@ -11,6 +11,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -30,7 +31,7 @@ import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import ir.DEFINEit.R;
 import ir.DEFINEit.adapter.WordTaggedAdapter;
-import ir.DEFINEit.model.WordSearchModel;
+import ir.DEFINEit.model.WordModel;
 import ir.DEFINEit.tools.database.DBM;
 import ir.DEFINEit.tools.dialog_manager.DialogManager;
 import ir.DEFINEit.tools.listeners.DefaultListener;
@@ -40,7 +41,7 @@ public class WordTaggedActivity extends AppCompatActivity {
     RecyclerView tagged_recyclerView;
     WordTaggedAdapter wordTaggedAdapter;
     AppCompatImageButton delete_tagged;
-    private List<WordSearchModel> words = new ArrayList<>();
+    private List<WordModel> words = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -83,6 +84,7 @@ public class WordTaggedActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onError(@NonNull Throwable e) {
+                                        Log.d("TAG", "onError: " + e.getMessage());
                                     }
                                 });
 
@@ -108,7 +110,7 @@ public class WordTaggedActivity extends AppCompatActivity {
                         wordTaggedAdapter.notifyDataSetChanged();
                     }
 
-                });
+                }, e -> Log.d("TAG", "start: " + e.getMessage()));
 
     }
 
@@ -140,7 +142,7 @@ public class WordTaggedActivity extends AppCompatActivity {
                         wordTaggedAdapter.setPersian(false);
                         wordTaggedAdapter.notifyDataSetChanged();
 
-                    });
+                    }, e -> Log.d("TAG", "onActivityResult: " + e.getMessage()));
 
         }
 

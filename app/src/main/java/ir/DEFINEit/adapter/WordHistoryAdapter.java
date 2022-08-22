@@ -10,6 +10,7 @@ package ir.DEFINEit.adapter;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,20 +28,20 @@ import io.reactivex.rxjava3.core.CompletableObserver;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import ir.DEFINEit.R;
-import ir.DEFINEit.model.WordSearchModel;
+import ir.DEFINEit.model.WordModel;
 import ir.DEFINEit.tools.database.DBM;
 import ir.DEFINEit.view.activity.ShowWordActivity;
 
 public class WordHistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<WordSearchModel> wordModels;
+    private List<WordModel> wordModels;
     private boolean isPersian;
 
     public void setPersian(boolean persian) {
         isPersian = persian;
     }
 
-    public WordHistoryAdapter(List<WordSearchModel> wordModels) {
+    public WordHistoryAdapter(List<WordModel> wordModels) {
         this.wordModels = wordModels;
     }
 
@@ -98,21 +99,17 @@ public class WordHistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(new CompletableObserver() {
-                                    @Override
-                                    public void onSubscribe(@NonNull Disposable d) {
-                                    }
-
+                                    @Override public void onSubscribe(@NonNull Disposable d) {}
                                     @SuppressLint("NotifyDataSetChanged")
-                                    @Override
-                                    public void onComplete() {
+                                    @Override public void onComplete() {
                                         Toast.makeText(v.getContext(), "از تاریخچه پاک شد", Toast.LENGTH_SHORT).show();
                                         wordModels.remove(position);
                                         notifyItemRemoved(position);
                                         notifyItemRangeChanged(position, getItemCount());
                                     }
-
                                     @Override
                                     public void onError(@NonNull Throwable e) {
+                                        Log.d("TAG", "onError: " + e.getMessage());
                                     }
                                 });
                     }

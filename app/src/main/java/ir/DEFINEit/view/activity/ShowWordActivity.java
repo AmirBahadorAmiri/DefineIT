@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -25,6 +26,9 @@ import java.util.Objects;
 
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.CompletableObserver;
+import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import ir.DEFINEit.R;
 import ir.DEFINEit.tools.copy_helper.CopyHelper;
@@ -60,13 +64,25 @@ public class ShowWordActivity extends AppCompatActivity {
                     if (word != null) {
 
                         setResult(1001);
-                        word.setViewCount((word.getViewCount() + 1));
-                        word.setView_time(new Date());
+                        word.setView_time(System.currentTimeMillis());
 
                         DBM.getDB(this).getWordDao().update(word)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
-                                .subscribe();
+                                .subscribe(new CompletableObserver() {
+                                    @Override
+                                    public void onSubscribe(@NonNull Disposable d) {
+                                    }
+
+                                    @Override
+                                    public void onComplete() {
+                                    }
+
+                                    @Override
+                                    public void onError(@NonNull Throwable e) {
+                                        Log.d("TAG", "onError: " + e.getMessage());
+                                    }
+                                });
 
                         englishWord.setText(word.getEnglishWord());
                         persianWord.setText(word.getPersianWord());
@@ -78,15 +94,27 @@ public class ShowWordActivity extends AppCompatActivity {
                         wordTagged.setOnClickListener(n -> {
                             setResult(1001);
                             word.setFavorite(!word.isFavorite());
-                            word.setFavorite_time(new Date());
-//                            word.setView_time(String.valueOf(System.currentTimeMillis()));
+                            word.setFavorite_time(System.currentTimeMillis());
                             if (word.isFavorite())
                                 wordTagged.setImageResource(R.drawable.ic_round_favorite);
                             else wordTagged.setImageResource(R.drawable.ic_round_unfavorite);
                             DBM.getDB(this).getWordDao().update(word)
                                     .subscribeOn(Schedulers.io())
                                     .observeOn(AndroidSchedulers.mainThread())
-                                    .subscribe();
+                                    .subscribe(new CompletableObserver() {
+                                        @Override
+                                        public void onSubscribe(@NonNull Disposable d) {
+                                        }
+
+                                        @Override
+                                        public void onComplete() {
+                                        }
+
+                                        @Override
+                                        public void onError(@NonNull Throwable e) {
+                                            Log.d("TAG", "onError: " + e.getMessage());
+                                        }
+                                    });
 
                         });
 
@@ -105,9 +133,7 @@ public class ShowWordActivity extends AppCompatActivity {
             if (VolumeManager.getVolume(this) == 0) {
 
                 Snackbar.make(v, "صدای سیستم قطع است", Snackbar.LENGTH_LONG)
-                        .setAction("افزایش صدا", n -> {
-                            VolumeManager.setVolume(this, VolumeManager.getManager(this).getStreamMaxVolume(AudioManager.STREAM_MUSIC));
-                        }).setTextColor(getResources().getColor(R.color.white)).show();
+                        .setAction("افزایش صدا", n -> VolumeManager.setVolume(this, VolumeManager.getManager(this).getStreamMaxVolume(AudioManager.STREAM_MUSIC))).setTextColor(getResources().getColor(R.color.white)).show();
 
             } else {
 

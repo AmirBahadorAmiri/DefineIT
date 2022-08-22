@@ -17,9 +17,9 @@ import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import ir.DEFINEit.model.TextModel;
-import ir.DEFINEit.model.WordSearchModel;
+import ir.DEFINEit.model.WordModel;
 
-@Database(entities = {WordSearchModel.class, TextModel.class}, version = 3, exportSchema = false)
+@Database(entities = {WordModel.class, TextModel.class}, version = 2, exportSchema = false)
 public abstract class DBM extends RoomDatabase {
 
     private static DBM DBM;
@@ -64,15 +64,14 @@ public abstract class DBM extends RoomDatabase {
                     .addMigrations(new Migration(1, 2) {
                         @Override
                         public void migrate(@NonNull SupportSQLiteDatabase database) {
-                            database.execSQL("ALTER TABLE word_tb Add Column view_time INTEGER");
-                            database.execSQL("ALTER TABLE word_tb Add Column favorite_time INTEGER");
-                        }
-                    })
-                    .addMigrations(new Migration(2, 3) {
-                        @Override
-                        public void migrate(@NonNull SupportSQLiteDatabase database) {
-                            database.execSQL("ALTER TABLE sentence_tb Add Column view_count INTEGER default 0 not null");
-                            database.execSQL("ALTER TABLE sentence_tb Add Column view_time INTEGER");
+
+                            database.execSQL("ALTER TABLE word_tb Add Column view_time INTEGER default 0 not null");
+                            database.execSQL("ALTER TABLE word_tb Add Column favorite_time INTEGER default 0 not null");
+
+                            database.execSQL("ALTER TABLE text_tb Add Column from_language_code TEXT");
+                            database.execSQL("ALTER TABLE text_tb Add Column to_language_code TEXT");
+                            database.execSQL("ALTER TABLE text_tb Add Column translation_time INTEGER default 0 not null");
+
                         }
                     })
                     .fallbackToDestructiveMigration()

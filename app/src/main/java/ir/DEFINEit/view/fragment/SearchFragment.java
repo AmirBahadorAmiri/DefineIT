@@ -44,7 +44,7 @@ import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import ir.DEFINEit.R;
 import ir.DEFINEit.adapter.WordSearchAdapter;
-import ir.DEFINEit.model.WordSearchModel;
+import ir.DEFINEit.model.WordModel;
 import ir.DEFINEit.tools.database.DBM;
 import ir.DEFINEit.view.activity.SettingsActivity;
 import ir.DEFINEit.view.activity.WordHistoryActivity;
@@ -139,7 +139,7 @@ public class SearchFragment extends Fragment {
                                             search_recyclerView.setVisibility(View.INVISIBLE);
                                             search_not_found.setVisibility(View.VISIBLE);
                                         }
-                                    });
+                                    }, e-> Log.d("TAG", "afterTextChanged: " + e.getMessage()));
                         }
                     });
                 }
@@ -161,7 +161,7 @@ public class SearchFragment extends Fragment {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private void addData(List<WordSearchModel> newData, boolean isPersian) {
+    private void addData(List<WordModel> newData, boolean isPersian) {
         wordSearchAdapter.setPersian(isPersian);
         wordSearchAdapter.loadData(newData);
         wordSearchAdapter.notifyDataSetChanged();

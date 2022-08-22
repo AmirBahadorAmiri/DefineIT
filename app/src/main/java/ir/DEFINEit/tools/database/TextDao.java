@@ -24,18 +24,18 @@ import ir.DEFINEit.model.TextModel;
 public interface TextDao {
 
     @Insert
-    Completable insert(TextModel sentence);
+    Completable insert(TextModel text);
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    Completable update(TextModel sentence);
+    Completable update(TextModel text);
 
     @Delete
-    Completable delete(TextModel sentence);
+    Completable delete(TextModel text);
 
-    @Query("SELECT * FROM sentence_tb")
-    Single<List<TextModel>> readAllSentence();
+    @Query("SELECT * FROM text_tb order by translation_time DESC")
+    Single<List<TextModel>> readAllText();
 
-    @Query("DELETE FROM sentence_tb")
-    Completable deleteAllSentence();
+    @Query("DELETE FROM text_tb")
+    Completable deleteAllText();
 
 }

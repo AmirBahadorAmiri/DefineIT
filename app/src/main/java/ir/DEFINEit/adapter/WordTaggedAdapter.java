@@ -11,6 +11,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,21 +29,21 @@ import io.reactivex.rxjava3.core.CompletableObserver;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import ir.DEFINEit.R;
-import ir.DEFINEit.model.WordSearchModel;
+import ir.DEFINEit.model.WordModel;
 import ir.DEFINEit.tools.database.DBM;
 import ir.DEFINEit.view.activity.ShowWordActivity;
 
 public class WordTaggedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
-    private List<WordSearchModel> wordModels;
+    private List<WordModel> wordModels;
     private boolean isPersian;
 
     public void setPersian(boolean persian) {
         isPersian = persian;
     }
 
-    public WordTaggedAdapter(Context context, List<WordSearchModel> wordModels) {
+    public WordTaggedAdapter(Context context, List<WordModel> wordModels) {
         this.context = context;
         this.wordModels = wordModels;
     }
@@ -105,7 +106,6 @@ public class WordTaggedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                                     @Override
                                     public void onSubscribe(@NonNull Disposable d) {
                                     }
-
                                     @SuppressLint("NotifyDataSetChanged")
                                     @Override
                                     public void onComplete() {
@@ -114,9 +114,9 @@ public class WordTaggedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                                         notifyItemRemoved(position);
                                         notifyItemRangeChanged(position, getItemCount());
                                     }
-
                                     @Override
                                     public void onError(@NonNull Throwable e) {
+                                        Log.d("TAG", "onError: " + e.getMessage());
                                     }
                                 });
                     }

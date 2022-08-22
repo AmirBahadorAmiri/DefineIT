@@ -8,6 +8,7 @@
 package ir.DEFINEit.adapter;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,21 +81,16 @@ public class TranslateHistoryAdapter extends RecyclerView.Adapter<TranslateHisto
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(new CompletableObserver() {
-                                    @Override
-                                    public void onSubscribe(@NonNull Disposable d) {
-                                    }
-
-                                    @SuppressLint("NotifyDataSetChanged")
-                                    @Override
-                                    public void onComplete() {
+                                    @Override public void onSubscribe(@NonNull Disposable d) {}
+                                    @SuppressLint("NotifyDataSetChanged") @Override public void onComplete() {
                                         Toast.makeText(v.getContext(), "از تاریخچه پاک شد", Toast.LENGTH_SHORT).show();
                                         textModels.remove(position);
                                         notifyItemRemoved(position);
                                         notifyItemRangeChanged(position, getItemCount());
                                     }
-
                                     @Override
                                     public void onError(@NonNull Throwable e) {
+                                        Log.d("TAG", "onError: " + e.getMessage());
                                     }
                                 });
                     }

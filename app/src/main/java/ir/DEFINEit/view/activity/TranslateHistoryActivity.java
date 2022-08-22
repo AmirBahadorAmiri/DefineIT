@@ -10,6 +10,7 @@ package ir.DEFINEit.view.activity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -25,6 +26,7 @@ import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.CompletableObserver;
+import io.reactivex.rxjava3.core.SingleObserver;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import ir.DEFINEit.R;
@@ -39,7 +41,7 @@ public class TranslateHistoryActivity extends AppCompatActivity {
     AppCompatImageButton delete_translated;
     RecyclerView translated_recyclerView;
     TranslateHistoryAdapter translateHistoryAdapter;
-    private List<TextModel> sentenceList = new ArrayList<>();
+    List<TextModel> sentenceList = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,17 +63,27 @@ public class TranslateHistoryActivity extends AppCompatActivity {
         translateHistoryAdapter = new TranslateHistoryAdapter(sentenceList);
         translated_recyclerView.setAdapter(translateHistoryAdapter);
 
-        DBM.getDB(this).getSentenceDao().readAllSentence()
+        DBM.getDB(this).getSentenceDao().readAllText()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(onNext -> {
-
-                    if (onNext != null && !onNext.isEmpty()) {
-                        sentenceList.clear();
-                        sentenceList.addAll(onNext);
-                        translateHistoryAdapter.notifyDataSetChanged();
+                .subscribe(new SingleObserver<List<TextModel>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
                     }
 
+                    @Override
+                    public void onSuccess(@NonNull List<TextModel> onNext) {
+                        if (onNext != null && !onNext.isEmpty()) {
+                            sentenceList.clear();
+                            sentenceList.addAll(onNext);
+                            translateHistoryAdapter.notifyDataSetChanged();
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Log.d("TAG", "onError: " + e.getMessage());
+                    }
                 });
 
 
@@ -82,7 +94,7 @@ public class TranslateHistoryActivity extends AppCompatActivity {
                 DialogManager.showDialog(this, false, "تاریخچه را پاک کنم ؟", new DefaultListener() {
                     @Override
                     public void onSuccess() {
-                        DBM.getDB(TranslateHistoryActivity.this).getSentenceDao().deleteAllSentence()
+                        DBM.getDB(TranslateHistoryActivity.this).getSentenceDao().deleteAllText()
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(new CompletableObserver() {
@@ -99,6 +111,7 @@ public class TranslateHistoryActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onError(@NonNull Throwable e) {
+                                        Log.d("TAG", "onError: " + e.getMessage());
                                     }
                                 });
                     }

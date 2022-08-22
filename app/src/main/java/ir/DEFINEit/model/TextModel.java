@@ -16,30 +16,27 @@ import java.util.Date;
 
 import ir.DEFINEit.tools.database.DateConverter;
 
-@Entity(tableName = "sentence_tb")
+@Entity(tableName = "text_tb")
 @TypeConverters({DateConverter.class})
 public class TextModel {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo(name = "segment")
+    @ColumnInfo(name = "main_text")
     private String text;
 
-    @ColumnInfo(name = "translation")
+    @ColumnInfo(name = "translation_text")
     private String translation;
 
-    @ColumnInfo(name = "view_count")
-    private int viewCount = 1;
+    @ColumnInfo(name = "translation_time")
+    private long translationTime;
 
-    @ColumnInfo(name = "view_time")
-    private Date view_time;
+    @ColumnInfo(name = "from_language_code")
+    private String fromLanguageCode;
 
-    public TextModel(String text, String translation, Date view_time) {
-        this.text = text;
-        this.translation = translation;
-        this.view_time = view_time;
-    }
+    @ColumnInfo(name = "to_language_code")
+    private String toLanguageCode;
 
     public int getId() {
         return id;
@@ -51,6 +48,22 @@ public class TextModel {
 
     public String getText() {
         return text;
+    }
+
+    public String getFromLanguageCode() {
+        return fromLanguageCode;
+    }
+
+    public void setFromLanguageCode(String fromLanguageCode) {
+        this.fromLanguageCode = fromLanguageCode;
+    }
+
+    public String getToLanguageCode() {
+        return toLanguageCode;
+    }
+
+    public void setToLanguageCode(String toLanguageCode) {
+        this.toLanguageCode = toLanguageCode;
     }
 
     public void setText(String text) {
@@ -65,19 +78,11 @@ public class TextModel {
         this.translation = translation;
     }
 
-    public int getViewCount() {
-        return viewCount;
+    public long getTranslationTime() {
+        return translationTime;
     }
 
-    public void setViewCount(int viewCount) {
-        this.viewCount = viewCount;
-    }
-
-    public Date getView_time() {
-        return view_time;
-    }
-
-    public void setView_time(Date view_time) {
-        this.view_time = view_time;
+    public void setTranslationTime(long translationTime) {
+        this.translationTime = translationTime;
     }
 }

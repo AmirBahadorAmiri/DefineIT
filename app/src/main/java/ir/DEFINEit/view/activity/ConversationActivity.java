@@ -30,13 +30,14 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 import ir.DEFINEit.R;
 import ir.DEFINEit.adapter.ConversationAdapter;
-import ir.DEFINEit.model.ConversationModel;
+import ir.DEFINEit.model.TextModel;
 import ir.DEFINEit.tools.dialog_manager.DialogManager;
 import ir.DEFINEit.tools.language_manager.LanguageManager;
 import ir.DEFINEit.tools.listeners.DefaultListener;
@@ -55,7 +56,7 @@ public class ConversationActivity extends AppCompatActivity {
     private RecyclerView conversation_recyclerView;
     private ConversationAdapter conversationAdapter;
     private AppCompatEditText conversation_editText;
-    List<ConversationModel> conversationList = new ArrayList<>();
+    List<TextModel> conversationList = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -197,10 +198,11 @@ public class ConversationActivity extends AppCompatActivity {
     }
 
     private void googleTranslate() {
-        ConversationModel model = new ConversationModel();
+        TextModel model = new TextModel();
         model.setText(Objects.requireNonNull(conversation_editText.getText()).toString());
         model.setFromLanguageCode(LanguageManager.getFromLangaugeCode());
         model.setToLanguageCode(LanguageManager.getToLangaugeCode());
+        model.setTranslationTime(System.currentTimeMillis());
         conversation_editText.setText("");
         WebApi.translateText(model.getText(), new DefaultListener() {
             @Override
@@ -218,7 +220,7 @@ public class ConversationActivity extends AppCompatActivity {
                                 sb.append(object_0.getJSONArray(1).getString(0));
                             }
                         }
-                        model.setTranslate(sb.toString());
+                        model.setTranslation(sb.toString());
                         conversationList.add(model);
                         conversationAdapter.notifyItemInserted(conversationList.size() - 1);
                         conversation_recyclerView.scrollToPosition(conversationList.size() - 1);
@@ -227,6 +229,7 @@ public class ConversationActivity extends AppCompatActivity {
                     Toast.makeText(ConversationActivity.this, "متاسفانه مشکلی در برقراری ارتباط پیش آمد", Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onFailure(Throwable throwable) {
                 Toast.makeText(ConversationActivity.this, "متاسفانه مشکلی در برقراری ارتباط پیش آمد", Toast.LENGTH_SHORT).show();

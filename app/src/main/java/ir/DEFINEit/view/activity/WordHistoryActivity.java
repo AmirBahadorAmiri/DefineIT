@@ -11,6 +11,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -30,7 +31,7 @@ import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import ir.DEFINEit.R;
 import ir.DEFINEit.adapter.WordHistoryAdapter;
-import ir.DEFINEit.model.WordSearchModel;
+import ir.DEFINEit.model.WordModel;
 import ir.DEFINEit.tools.database.DBM;
 import ir.DEFINEit.tools.dialog_manager.DialogManager;
 import ir.DEFINEit.tools.listeners.DefaultListener;
@@ -40,7 +41,7 @@ public class WordHistoryActivity extends AppCompatActivity {
     RecyclerView history_recyclerView;
     AppCompatImageButton delete_history;
     WordHistoryAdapter wordHistoryAdapter;
-    private List<WordSearchModel> words = new ArrayList<>();
+    private List<WordModel> words = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,7 +71,7 @@ public class WordHistoryActivity extends AppCompatActivity {
                         wordHistoryAdapter.notifyDataSetChanged();
                     }
 
-                });
+                }, e -> Log.d("TAG", "start: " + e.getMessage()));
 
         delete_history.setOnClickListener(n -> {
 
@@ -84,18 +85,16 @@ public class WordHistoryActivity extends AppCompatActivity {
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(new CompletableObserver() {
                                     @Override
-                                    public void onSubscribe(@NonNull Disposable d) {
-                                    }
-
+                                    public void onSubscribe(@NonNull Disposable d) {}
                                     @Override
                                     public void onComplete() {
                                         Toast.makeText(WordHistoryActivity.this, "تاریخچه پاک شد", Toast.LENGTH_SHORT).show();
                                         words.clear();
                                         wordHistoryAdapter.notifyDataSetChanged();
                                     }
-
                                     @Override
                                     public void onError(@NonNull Throwable e) {
+                                        Log.d("TAG", "onError: " + e.getMessage());
                                     }
                                 });
                     }
@@ -137,7 +136,7 @@ public class WordHistoryActivity extends AppCompatActivity {
                         }
                         wordHistoryAdapter.setPersian(false);
                         wordHistoryAdapter.notifyDataSetChanged();
-                    });
+                    }, e -> Log.d("TAG", "onActivityResult: " + e.getMessage()));
         }
     }
 }

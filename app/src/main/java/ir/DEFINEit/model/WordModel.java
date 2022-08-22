@@ -12,13 +12,11 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
-import java.util.Date;
-
 import ir.DEFINEit.tools.database.DateConverter;
 
 @Entity(tableName = "word_tb")
 @TypeConverters({DateConverter.class})
-public class WordSearchModel {
+public class WordModel {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -32,18 +30,13 @@ public class WordSearchModel {
     @ColumnInfo(name = "favorite")
     private Boolean favorite = false;
 
-    @ColumnInfo(name = "view_count")
-    private int viewCount = 0;
-
     @ColumnInfo(name = "view_time")
-    private Date view_time;
+    private long view_time;
 
     @ColumnInfo(name = "favorite_time")
-    private Date favorite_time;
+    private long favorite_time;
 
-    public WordSearchModel(String persianWord, String englishWord) {
-        this.persianWord = persianWord;
-        this.englishWord = englishWord;
+    public WordModel() {
     }
 
     public int getId() {
@@ -58,16 +51,8 @@ public class WordSearchModel {
         return persianWord;
     }
 
-    public void setPersianWord(String persianWord) {
-        this.persianWord = persianWord;
-    }
-
     public String getEnglishWord() {
         return englishWord;
-    }
-
-    public void setEnglishWord(String englishWord) {
-        this.englishWord = englishWord;
     }
 
     public Boolean isFavorite() {
@@ -78,27 +63,27 @@ public class WordSearchModel {
         this.favorite = favorite;
     }
 
-    public int getViewCount() {
-        return viewCount;
+    public void setPersianWord(String persianWord) {
+        this.persianWord = persianWord;
     }
 
-    public void setViewCount(int viewCount) {
-        this.viewCount = viewCount;
+    public void setEnglishWord(String englishWord) {
+        this.englishWord = englishWord;
     }
 
-    public Date getView_time() {
+    public long getView_time() {
         return view_time;
     }
 
-    public void setView_time(Date view_time) {
+    public void setView_time(long view_time) {
         this.view_time = view_time;
     }
 
-    public Date getFavorite_time() {
+    public long getFavorite_time() {
         return favorite_time;
     }
 
-    public void setFavorite_time(Date favorite_time) {
+    public void setFavorite_time(long favorite_time) {
         this.favorite_time = favorite_time;
     }
 }

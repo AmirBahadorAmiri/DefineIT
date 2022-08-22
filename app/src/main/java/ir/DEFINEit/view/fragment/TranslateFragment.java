@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,8 @@ import java.util.Date;
 import java.util.Objects;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.CompletableObserver;
+import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import ir.DEFINEit.R;
 import ir.DEFINEit.model.TextModel;
@@ -295,11 +298,24 @@ public class TranslateFragment extends Fragment {
 
                         translated_result.setText(sb.toString());
 
+                        TextModel textModel = new TextModel();
+                        textModel.setText(translated_editText.getText().toString());
+                        textModel.setTranslation(sb.toString());
+                        textModel.setTranslationTime(System.currentTimeMillis());
+                        textModel.setFromLanguageCode(LanguageManager.getFromLangaugeCode());
+                        textModel.setToLanguageCode(LanguageManager.getToLangaugeCode());
+
                         DBM.getDB(requireActivity()).getSentenceDao()
-                                .insert(new TextModel(translated_editText.getText().toString(), sb.toString(), new Date()))
+                                .insert(textModel)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
-                                .subscribe();
+                                .subscribe(new CompletableObserver() {
+                                    @Override public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {}
+                                    @Override public void onComplete() {}
+                                    @Override public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+                                        Log.d("TAG", "onError: " + e.getMessage());
+                                    }
+                                });
 
                     }
                 } catch (IOException | JSONException e) {

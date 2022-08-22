@@ -21,13 +21,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ir.DEFINEit.R;
-import ir.DEFINEit.model.WordSearchModel;
+import ir.DEFINEit.model.WordModel;
 import ir.DEFINEit.view.activity.ShowWordActivity;
 
 public class WordSearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
-    private List<WordSearchModel> wordModels = new ArrayList<>();
+    private List<WordModel> wordModels = new ArrayList<>();
     private boolean isPersian;
 
     public void setPersian(boolean persian) {
@@ -56,7 +56,7 @@ public class WordSearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         return wordModels.size();
     }
 
-    public void loadData(List<WordSearchModel> newWordModels) {
+    public void loadData(List<WordModel> newWordModels) {
         wordModels.clear();
         wordModels.addAll(newWordModels);
     }

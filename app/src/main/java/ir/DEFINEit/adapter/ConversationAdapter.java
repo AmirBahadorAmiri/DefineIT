@@ -21,14 +21,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import ir.DEFINEit.R;
-import ir.DEFINEit.model.ConversationModel;
+import ir.DEFINEit.model.TextModel;
 
 public class ConversationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    Context context;
-    private List<ConversationModel> conversationList;
+    private Context context;
+    private List<TextModel> conversationList;
 
-    public ConversationAdapter(Context context, List<ConversationModel> conversationList) {
+    public ConversationAdapter(Context context, List<TextModel> conversationList) {
         this.context = context;
         this.conversationList = conversationList;
     }
@@ -63,7 +63,7 @@ public class ConversationAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             conversation_to = itemView.findViewById(R.id.conversation_to);
 
             conversation_from.setText(conversationList.get(position).getText());
-            conversation_to.setText(conversationList.get(position).getTranslate());
+            conversation_to.setText(conversationList.get(position).getTranslation());
 
             itemView.setOnLongClickListener(v -> {
 
