@@ -21,7 +21,6 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import com.pushpole.sdk.PushPole;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
@@ -32,7 +31,6 @@ import ir.DEFINEit.R;
 import ir.DEFINEit.tools.dialog_manager.DialogManager;
 import ir.DEFINEit.tools.listeners.DefaultListener;
 import ir.DEFINEit.tools.packager.Packager;
-import ir.DEFINEit.tools.permission_manager.PermisionListener;
 import ir.DEFINEit.tools.permission_manager.PermissionManager;
 import ir.DEFINEit.tools.user_info.User;
 
@@ -44,84 +42,37 @@ public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        if (User.isDarkTheme()) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        String version = "نگارش " + Packager.getVersionName(this);
+        ((AppCompatTextView) findViewById(R.id.txt_version)).setText(version);
 
-        if (User.isDarkTheme())
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        //noinspection ResultOfMethodCallIgnored
+        Observable.timer(1000, TimeUnit.MILLISECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext -> PermissionManager.onCheckPermissions(SplashActivity.this, perms, (permissionGranted, permissionDenied) -> {
+                    if (!permissionDenied.isEmpty()) {
+                        DialogManager.showDialog(SplashActivity.this, false, "برای عملکرد بهتر برنامه دسترسی‌های مورد نیاز را بدهید", new DefaultListener() {
+                            @Override
+                            public void onSuccess() {
+                                PermissionManager.onRequestPermissions(SplashActivity.this, perms, 1004);
+                            }
 
-        PermissionManager.onCheckPermissions(this, perms, new PermisionListener() {
-            @Override
-            public void onChecked(List<String> permissionGranted, List<String> permissionDenied) {
-                if (!permissionDenied.isEmpty()) {
-                    DialogManager.showDialog(SplashActivity.this, false, "برای عملکرد بهتر برنامه دسترسی‌های مورد نیاز را بدهید", new DefaultListener() {
-                        @Override
-                        public void onSuccess() {
-                            PermissionManager.onRequestPermissions(SplashActivity.this, perms, 1004);
-                        }
-
-                        @Override
-                        public void onFailure() {
-                            start();
-                        }
-                    });
-                } else {
-                    start();
-                }
-            }
-        });
+                            @Override
+                            public void onFailure() {
+                                start();
+                            }
+                        });
+                    } else {
+                        start();
+                    }
+                }), onError -> Log.d("TAG", "onCreate: ", onError));
 
     }
-
-//    private void loginAppVersion() {
-//
-//        WebApi.loginAppVersion(this, new DefaultListener() {
-//            @Override
-//            public void onSuccess(Response<ResponseBody> response) {
-//                if (response.body() != null) {
-//                    try {
-//                        JSONObject json = new JSONObject(response.body().string());
-//                        if (json.getBoolean("status")) {
-//                            next();
-//                        } else {
-//
-//                            DialogManager.showDialog(SplashActivity.this, false, "اپلیکیشن نیازمند بروزرسانی میباشد‍‍‍‍, آیا مایل به بروزرسانی هستید ؟", "آره", "نچ", new DefaultListener() {
-//                                @Override
-//                                public void onSuccess() {
-//                                    Packager.openInPlayStore(SplashActivity.this);
-//                                    finish();
-//                                }
-//
-//                                @Override
-//                                public void onFailure() {
-//                                    Toast.makeText(SplashActivity.this, "برای ادامه حتما باید اپلیکیشن را بروزرسانی کنید", Toast.LENGTH_SHORT).show();
-//                                    finish();
-//                                }
-//                            });
-//
-//                        }
-//                    } catch (JSONException | IOException e) {
-//                        next();
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Throwable throwable) {
-//                next();
-//            }
-//        });
-//
-//    }
-
-//    public void next() {
-//        if (User.userIsAvailable())
-//            startActivity(new Intent(SplashActivity.this, MainActivity.class));
-//        else if (User.getUserSkip())
-//            startActivity(new Intent(SplashActivity.this, MainActivity.class));
-//        else startActivity(new Intent(SplashActivity.this, RegisterActivity.class));
-//        finish();
-//    }
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -137,28 +88,8 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void start() {
-
-        PushPole.initialize(this, true);
-
-        String version = "نگارش " + Packager.getVersionName(this);
-        ((AppCompatTextView) findViewById(R.id.txt_version)).setText(version);
-
-        //noinspection ResultOfMethodCallIgnored
-        Observable.timer(1000, TimeUnit.MILLISECONDS)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(onNext -> {
-
-                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                    finish();
-
-//                    if (NetworktManager.isVpnConnected()) {
-//                        Snackbar.make(findViewById(R.id.txt_version), "لطفا vpn خود را غیرفعال نمایید", Snackbar.LENGTH_LONG)
-//                                .setTextColor(getResources().getColor(R.color.white)).show();
-//                    } else {
-//                        loginAppVersion();
-//                    }
-                }, onError -> Log.d("TAG", "onCreate: ", onError));
-
+        PushPole.initialize(getApplicationContext(), true);
+        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+        finish();
     }
 }

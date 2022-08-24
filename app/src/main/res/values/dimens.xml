@@ -3,7 +3,7 @@
     <dimen name="standard_2dp">2dp</dimen>
     <dimen name="standard_4dp">4dp</dimen>
     <dimen name="standard_8dp">8dp</dimen>
-    <dimen name="standard_12dp">120dp</dimen>
+    <dimen name="standard_12dp">12dp</dimen>
     <dimen name="standard_16dp">16dp</dimen>
     <dimen name="standard_20dp">20dp</dimen>
     <dimen name="standard_24dp">24dp</dimen>

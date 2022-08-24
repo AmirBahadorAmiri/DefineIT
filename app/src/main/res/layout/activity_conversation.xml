@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@color/themeActionBarColor"
-        android:elevation="@dimen/standard_2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,7 +21,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/standard_20dp"
-        android:elevation="@dimen/standard_2dp"
         android:text="@string/conversation"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,19 +32,17 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:elevation="@dimen/standard_2dp"
         app:layout_constraintBottom_toBottomOf="@+id/translate_reverse_language"
         app:layout_constraintEnd_toStartOf="@+id/translate_reverse_language"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/translate_reverse_language"
-        tools:text="@string/english" />
+        tools:text="english" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/translate_reverse_language"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="@dimen/standard_40dp"
         android:layout_height="0dp"
-        android:elevation="@dimen/standard_2dp"
         android:src="@drawable/ic_round_arrow_right"
         android:tint="@color/themeAccentColor"
         app:layout_constraintBottom_toBottomOf="@+id/setting_action_bar"
@@ -59,12 +55,11 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:elevation="@dimen/standard_2dp"
         app:layout_constraintBottom_toBottomOf="@+id/translate_reverse_language"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/translate_reverse_language"
         app:layout_constraintTop_toTopOf="@+id/translate_reverse_language"
-        tools:text="@string/english" />
+        tools:text="english" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/conversation_recyclerView"
@@ -80,7 +75,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/themeActionBarColor"
-        android:elevation="@dimen/standard_4dp"
         android:gravity="center"
         android:minHeight="@dimen/standard_50dp"
         android:orientation="horizontal"

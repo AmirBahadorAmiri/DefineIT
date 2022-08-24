@@ -2,12 +2,12 @@
 <resources>
 
     <!--  DARK theme color  -->
-    <color name="themeBackgroundColor">#444</color>
-    <color name="themeActionBarColor">#333</color>
-    <color name="themePrimaryColor">#F61756</color>
-    <color name="themePrimaryDarkColor">#C3083D</color>
-    <color name="themeAccentColor">#F61756</color>
-    <color name="themeTextColor">#fff</color>
-    <color name="themeHintTextColor">#bbb</color>
+    <color name="themeBackgroundColor">#333</color>
+    <color name="themeActionBarColor">#444</color>
+    <color name="themePrimaryColor">#FF7043</color>
+    <color name="themePrimaryDarkColor">#ED6135</color>
+    <color name="themeAccentColor">#FF7043</color>
+    <color name="themeTextColor">#eee</color>
+    <color name="themeHintTextColor">#aaa</color>
 
 </resources>

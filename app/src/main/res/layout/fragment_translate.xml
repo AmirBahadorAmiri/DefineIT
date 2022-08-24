@@ -12,7 +12,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/themeActionBarColor"
-        android:elevation="@dimen/standard_2dp"
         android:gravity="center"
         android:orientation="vertical"
         android:paddingTop="60dp"
@@ -32,7 +31,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                tools:text="@string/persian" />
+                tools:text="فارسی" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/translate_reverse_language"
@@ -49,7 +48,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                tools:text="@string/english" />
+                tools:text="انگلیسی" />
 
         </LinearLayout>
 
@@ -107,7 +106,6 @@
         android:id="@+id/setting_action_bar_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="@dimen/standard_2dp"
         android:text="@string/translate_page"
         android:layout_marginTop="10.5dp"
         android:textStyle="bold"
@@ -123,7 +121,6 @@
         android:layout_height="@dimen/standard_40dp"
         android:layout_marginStart="@dimen/standard_8dp"
         android:layout_marginTop="10.5dp"
-        android:elevation="@dimen/standard_2dp"
         android:src="@drawable/ic_round_history"
         android:tint="@color/themeAccentColor"
         app:layout_constraintStart_toStartOf="parent"
@@ -135,7 +132,6 @@
         android:layout_width="@dimen/standard_40dp"
         android:layout_height="@dimen/standard_40dp"
         android:layout_marginStart="@dimen/standard_8dp"
-        android:elevation="@dimen/standard_2dp"
         android:src="@drawable/ic_round_conversation"
         android:tint="@color/themeAccentColor"
         app:layout_constraintStart_toEndOf="@id/historyLogo"
@@ -146,9 +142,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
-        android:background="@drawable/bg_white_round_5dp"
+        android:background="@drawable/bg_white_round_12dp"
         android:backgroundTint="@color/themeActionBarColor"
-        android:elevation="@dimen/standard_2dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

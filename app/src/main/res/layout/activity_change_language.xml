@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/standard_50dp"
         android:background="@color/themeActionBarColor"
-        android:elevation="@dimen/standard_2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,7 +19,6 @@
         android:id="@+id/setting_action_bar_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="@dimen/standard_2dp"
         android:text="@string/pick_language"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/setting_action_bar"

@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="70dp"
-    android:layout_marginStart="@dimen/standard_8dp"
-    android:layout_marginTop="@dimen/standard_4dp"
-    android:layout_marginEnd="@dimen/standard_8dp"
-    android:layout_marginBottom="@dimen/standard_4dp"
+    android:layout_marginStart="@dimen/standard_4dp"
+    android:layout_marginTop="@dimen/standard_2dp"
+    android:layout_marginEnd="@dimen/standard_4dp"
+    android:layout_marginBottom="@dimen/standard_2dp"
     android:backgroundTint="@color/themeActionBarColor"
     android:foreground="?selectableItemBackground"
     android:orientation="horizontal"
-    app:cardCornerRadius="@dimen/standard_8dp"
+    app:cardCornerRadius="@dimen/standard_12dp"
     tools:targetApi="lollipop">
 
     <androidx.appcompat.widget.LinearLayoutCompat

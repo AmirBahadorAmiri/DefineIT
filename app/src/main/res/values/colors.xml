@@ -4,10 +4,10 @@
 <!--  LIGHT theme color  -->
     <color name="themeBackgroundColor">#eee</color>
     <color name="themeActionBarColor">#fff</color>
-    <color name="themePrimaryColor">#039BE5</color>
-    <color name="themePrimaryDarkColor">#1976D2</color>
-    <color name="themeAccentColor">#22A9E6</color>
-    <color name="themeTextColor">#000</color>
+    <color name="themePrimaryColor">#4F6FFF</color>
+    <color name="themePrimaryDarkColor">#4F5FEE</color>
+    <color name="themeAccentColor">#4F6FFF</color>
+    <color name="themeTextColor">#111</color>
     <color name="themeHintTextColor">#bbb</color>
 
 

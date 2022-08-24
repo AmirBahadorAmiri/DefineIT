@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/themeBackgroundColor">
+    android:background="@color/themeBackgroundColor"
+    tools:targetApi="lollipop">
 
     <View
         android:id="@+id/setting_action_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/standard_50dp"
         android:background="@color/themeActionBarColor"
-        android:elevation="@dimen/standard_2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -19,7 +20,6 @@
         android:id="@+id/setting_action_bar_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="@dimen/standard_2dp"
         android:text="@string/translate_history"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/setting_action_bar"
@@ -33,7 +33,6 @@
         android:layout_height="@dimen/standard_40dp"
         android:layout_marginStart="@dimen/standard_8dp"
         android:backgroundTint="@color/themeActionBarColor"
-        android:elevation="@dimen/standard_2dp"
         android:src="@drawable/ic_round_delete"
         android:tint="@color/themeAccentColor"
         app:layout_constraintBottom_toBottomOf="@id/setting_action_bar"
