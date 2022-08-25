@@ -73,7 +73,7 @@ public class MeFragment extends Fragment {
         developer_gmail.setOnClickListener(view -> bugDialog());
         support_app.setOnClickListener(v -> AdManager.requestAd(requireActivity(), new DefaultListener() {
             @Override
-            public void onSuccess() {
+            public void onSuccess(Object obj) {
                 AdManager.showAd(requireActivity(), new AdShowListener() {
                     @Override
                     public void onRewarded(TapsellPlusAdModel tapsellPlusAdModel) {
@@ -85,7 +85,7 @@ public class MeFragment extends Fragment {
             }
 
             @Override
-            public void onFailure() {
+            public void onFailure(Object obj) {
                 Toast.makeText(requireContext(), "متاسفانه درخواست شما با مشکل مواجه شد", Toast.LENGTH_SHORT).show();
             }
         }));
@@ -95,13 +95,13 @@ public class MeFragment extends Fragment {
     }
 
     private void bugDialog() {
-        DialogManager.showMsgDialog(requireContext(), true, "گزارش مشکل", "مشکل خود را بنویسید …", new DefaultListener() {
+        DialogManager.showDescribableQuizDialog(requireContext(), true, "گزارش مشکل", "مشکل خود را بنویسید …", new DefaultListener() {
             @Override
-            public void onSuccess(String str) {
+            public void onSuccess(Object obj) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setData(Uri.parse("email"));
                 intent.setType("message/rfc822");
-                intent.putExtra(Intent.EXTRA_TEXT, str);
+                intent.putExtra(Intent.EXTRA_TEXT, ((String) obj));
                 intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
                 intent.putExtra(Intent.EXTRA_EMAIL, new String[]{getString(R.string.developer_gmail)});
                 startActivity(Intent.createChooser(intent, "انتخاب برنامه مورد نظر ..."));

@@ -28,12 +28,12 @@ public class AdManager {
                     public void response(TapsellPlusAdModel tapsellPlusAdModel) {
                         super.response(tapsellPlusAdModel);
                         rewardedResponseId = tapsellPlusAdModel.getResponseId();
-                        defaultListener.onSuccess();
+                        defaultListener.onSuccess(null);
                     }
 
                     @Override
                     public void error(String message) {
-                        defaultListener.onFailure();
+                        defaultListener.onFailure(null);
                     }
                 });
     }

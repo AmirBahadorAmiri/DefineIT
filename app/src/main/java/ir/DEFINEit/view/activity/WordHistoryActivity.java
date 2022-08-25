@@ -77,9 +77,9 @@ public class WordHistoryActivity extends AppCompatActivity {
 
             if (words != null && !words.isEmpty()) {
 
-                DialogManager.showDialog(this, false, "تاریخچه را پاک کنم ؟", new DefaultListener() {
+                DialogManager.showAcceptableQuizDialog(this, false, "تاریخچه را پاک کنم ؟", new DefaultListener() {
                     @Override
-                    public void onSuccess() {
+                    public void onSuccess(Object obj) {
                         DBM.getDB(WordHistoryActivity.this).getWordDao().clearHistories()
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())

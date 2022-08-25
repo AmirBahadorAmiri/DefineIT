@@ -63,10 +63,9 @@ public class WordTaggedActivity extends AppCompatActivity {
 
             if (words != null && !words.isEmpty()) {
 
-                DialogManager.showDialog(this, false, "کلمات ستاره دار را پاک کنم ؟", new DefaultListener() {
+                DialogManager.showAcceptableQuizDialog(this, false, "کلمات ستاره دار را پاک کنم ؟", new DefaultListener() {
                     @Override
-                    public void onSuccess() {
-
+                    public void onSuccess(Object obj) {
                         DBM.getDB(WordTaggedActivity.this).getWordDao().clearFavorites()
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
@@ -87,7 +86,6 @@ public class WordTaggedActivity extends AppCompatActivity {
                                         Log.d("TAG", "onError: " + e.getMessage());
                                     }
                                 });
-
                     }
                 });
 

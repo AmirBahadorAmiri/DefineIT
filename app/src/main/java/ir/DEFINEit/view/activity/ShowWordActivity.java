@@ -139,7 +139,7 @@ public class ShowWordActivity extends AppCompatActivity {
 
                 TTsSingle.initialize(this, new DefaultListener() {
                     @Override
-                    public void onSuccess() {
+                    public void onSuccess(Object obj) {
                         if (TTsSingle.isSupportLanguage(ShowWordActivity.this, "en")) {
                             TTsSingle.speak(englishWord.getText().toString());
                         } else {

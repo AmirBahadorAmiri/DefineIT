@@ -37,7 +37,6 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Objects;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -118,7 +117,7 @@ public class TranslateFragment extends Fragment {
 
                 TTsSingle.initialize(requireContext(), new DefaultListener() {
                     @Override
-                    public void onSuccess() {
+                    public void onSuccess(Object obj) {
                         if (TTsSingle.isSupportLanguage(requireContext(), LanguageManager.getToLangaugeCode())) {
                             TTsSingle.speak(translated_result.getText().toString());
                         } else {
@@ -240,12 +239,12 @@ public class TranslateFragment extends Fragment {
             if (User.userCanUseApp()) {
                 googleTranslate();
             } else {
-                DialogManager.showDialog(requireContext(), true, "برای استفاده از این بخش باید تبلیغات را تماشا کنید، آیا مایل هستید؟", new DefaultListener() {
+                DialogManager.showAcceptableQuizDialog(requireContext(), true, "برای استفاده از این بخش باید تبلیغات را تماشا کنید، آیا مایل هستید؟", new DefaultListener() {
                     @Override
-                    public void onSuccess() {
+                    public void onSuccess(Object obj) {
                         AdManager.requestAd(requireActivity(), new DefaultListener() {
                             @Override
-                            public void onSuccess() {
+                            public void onSuccess(Object obj) {
                                 AdManager.showAd(requireActivity(), new AdShowListener() {
                                     @Override
                                     public void onRewarded(TapsellPlusAdModel tapsellPlusAdModel) {
@@ -256,11 +255,10 @@ public class TranslateFragment extends Fragment {
                             }
 
                             @Override
-                            public void onFailure() {
+                            public void onFailure(Object obj) {
                                 Toast.makeText(requireContext(), "متاسفانه درخواست شما با مشکل مواجه شد", Toast.LENGTH_SHORT).show();
                             }
                         });
-
                     }
                 });
             }
@@ -273,12 +271,11 @@ public class TranslateFragment extends Fragment {
     private void googleTranslate() {
         WebApi.translateText(Objects.requireNonNull(translated_editText.getText()).toString(), new DefaultListener() {
             @Override
-            public void onSuccess(Response<ResponseBody> response) {
-
+            public void onSuccess(Object obj) {
                 try {
-                    if (response.body() != null) {
+                    if (((Response<ResponseBody>) obj).body() != null) {
 
-                        String result = response.body().string();
+                        String result = ((Response<ResponseBody>) obj).body().string();
                         JSONArray object = new JSONArray(result);
                         JSONArray object_0 = object.getJSONArray(0);
                         JSONArray object_1 = object_0.getJSONArray(0);
@@ -310,9 +307,16 @@ public class TranslateFragment extends Fragment {
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(new CompletableObserver() {
-                                    @Override public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {}
-                                    @Override public void onComplete() {}
-                                    @Override public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+                                    @Override
+                                    public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
+                                    }
+
+                                    @Override
+                                    public void onComplete() {
+                                    }
+
+                                    @Override
+                                    public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
                                         Log.d("TAG", "onError: " + e.getMessage());
                                     }
                                 });
@@ -324,11 +328,10 @@ public class TranslateFragment extends Fragment {
                     share_text.setVisibility(View.INVISIBLE);
                     Toast.makeText(requireContext(), "متاسفانه مشکلی در برقراری ارتباط پیش آمد", Toast.LENGTH_SHORT).show();
                 }
-
             }
 
             @Override
-            public void onFailure(Throwable throwable) {
+            public void onFailure(Object obj) {
                 translated_scrollView.setVisibility(View.INVISIBLE);
                 copy_text.setVisibility(View.INVISIBLE);
                 share_text.setVisibility(View.INVISIBLE);

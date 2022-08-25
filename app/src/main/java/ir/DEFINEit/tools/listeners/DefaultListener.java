@@ -7,22 +7,12 @@
 
 package ir.DEFINEit.tools.listeners;
 
-import okhttp3.ResponseBody;
-import retrofit2.Response;
-
 public interface DefaultListener {
-    default void onSuccess(String str) {
+
+    default void onSuccess(Object obj) {
     }
 
-    default void onSuccess() {
+    default void onFailure(Object obj) {
     }
 
-    default void onFailure() {
-    }
-
-    default void onSuccess(Response<ResponseBody> response) {
-    }
-
-    default void onFailure(Throwable throwable) {
-    }
 }

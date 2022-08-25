@@ -91,9 +91,9 @@ public class TranslateHistoryActivity extends AppCompatActivity {
 
             if (sentenceList != null && !sentenceList.isEmpty()) {
 
-                DialogManager.showDialog(this, false, "تاریخچه را پاک کنم ؟", new DefaultListener() {
+                DialogManager.showAcceptableQuizDialog(this, false, "تاریخچه را پاک کنم ؟", new DefaultListener() {
                     @Override
-                    public void onSuccess() {
+                    public void onSuccess(Object obj) {
                         DBM.getDB(TranslateHistoryActivity.this).getSentenceDao().deleteAllText()
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())

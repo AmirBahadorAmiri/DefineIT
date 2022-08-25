@@ -133,9 +133,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void exitDialog() {
-        DialogManager.showDialog(this, true, "آیا میخواهید خارج شوید ؟", new DefaultListener() {
+        DialogManager.showAcceptableQuizDialog(this, true, "آیا میخواهید خارج شوید ؟", new DefaultListener() {
             @Override
-            public void onSuccess() {
+            public void onSuccess(Object obj) {
                 finish();
             }
         });

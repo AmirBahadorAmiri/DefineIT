@@ -43,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
 //    }
 //
 //    public void skip() {
-//        DialogManager.showDialog(this, false, "آیا میخواهید از ورود صرف نظر کنید ؟", "آره", "نچ", new DefaultListener() {
+//        DialogManager.showAcceptableQuizDialog(this, false, "آیا میخواهید از ورود صرف نظر کنید ؟", "آره", "نچ", new DefaultListener() {
 //            @Override
 //            public void onSuccess() {
 //                User.setUserSkip(true);

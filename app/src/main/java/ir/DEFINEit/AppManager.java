@@ -34,7 +34,7 @@ public class AppManager extends Application {
 
         TTsSingle.initialize(this, new DefaultListener() {
             @Override
-            public void onSuccess() {
+            public void onSuccess(Object obj) {
                 TTsSingle.isSupportLanguage(getBaseContext(), LanguageManager.getDefaultVoiceLanguage());
             }
         });

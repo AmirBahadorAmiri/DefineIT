@@ -30,7 +30,6 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -170,12 +169,12 @@ public class ConversationActivity extends AppCompatActivity {
             if (User.userCanUseApp()) {
                 googleTranslate();
             } else {
-                DialogManager.showDialog(this, true, "برای استفاده از این بخش باید تبلیغات را تماشا کنید، آیا مایل هستید؟", new DefaultListener() {
+                DialogManager.showAcceptableQuizDialog(this, true, "برای استفاده از این بخش باید تبلیغات را تماشا کنید، آیا مایل هستید؟", new DefaultListener() {
                     @Override
-                    public void onSuccess() {
+                    public void onSuccess(Object obj) {
                         AdManager.requestAd(ConversationActivity.this, new DefaultListener() {
                             @Override
-                            public void onSuccess() {
+                            public void onSuccess(Object obj) {
                                 AdManager.showAd(ConversationActivity.this, new AdShowListener() {
                                     @Override
                                     public void onRewarded(TapsellPlusAdModel tapsellPlusAdModel) {
@@ -186,11 +185,10 @@ public class ConversationActivity extends AppCompatActivity {
                             }
 
                             @Override
-                            public void onFailure() {
+                            public void onFailure(Object obj) {
                                 Toast.makeText(ConversationActivity.this, "متاسفانه درخواست شما با مشکل مواجه شد", Toast.LENGTH_SHORT).show();
                             }
                         });
-
                     }
                 });
             }
@@ -206,10 +204,10 @@ public class ConversationActivity extends AppCompatActivity {
         conversation_editText.setText("");
         WebApi.translateText(model.getText(), new DefaultListener() {
             @Override
-            public void onSuccess(Response<ResponseBody> response) {
+            public void onSuccess(Object obj) {
                 try {
-                    if (response.body() != null) {
-                        String result = response.body().string();
+                    if (((Response<ResponseBody>) obj).body() != null) {
+                        String result = ((Response<ResponseBody>) obj).body().string();
                         JSONArray object = new JSONArray(result);
                         JSONArray object_0 = object.getJSONArray(0);
                         JSONArray object_1 = object_0.getJSONArray(0);
@@ -231,7 +229,7 @@ public class ConversationActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Throwable throwable) {
+            public void onFailure(Object obj) {
                 Toast.makeText(ConversationActivity.this, "متاسفانه مشکلی در برقراری ارتباط پیش آمد", Toast.LENGTH_SHORT).show();
             }
         });

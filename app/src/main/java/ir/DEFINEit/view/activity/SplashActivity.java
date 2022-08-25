@@ -56,14 +56,14 @@ public class SplashActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(onNext -> PermissionManager.onCheckPermissions(SplashActivity.this, perms, (permissionGranted, permissionDenied) -> {
                     if (!permissionDenied.isEmpty()) {
-                        DialogManager.showDialog(SplashActivity.this, false, "برای عملکرد بهتر برنامه دسترسی‌های مورد نیاز را بدهید", new DefaultListener() {
+                        DialogManager.showAcceptableQuizDialog(SplashActivity.this, false, "برای عملکرد بهتر برنامه دسترسی‌های مورد نیاز را بدهید", new DefaultListener() {
                             @Override
-                            public void onSuccess() {
+                            public void onSuccess(Object obj) {
                                 PermissionManager.onRequestPermissions(SplashActivity.this, perms, 1004);
                             }
 
                             @Override
-                            public void onFailure() {
+                            public void onFailure(Object obj) {
                                 start();
                             }
                         });

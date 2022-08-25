@@ -32,11 +32,11 @@ public class TTsSingle {
     public static void initialize(Context context, DefaultListener defaultListener) {
         if (textToSpeech == null) {
             textToSpeech = new TextToSpeech(context, status -> {
-                if (status == TextToSpeech.SUCCESS) defaultListener.onSuccess();
-                else defaultListener.onFailure();
+                if (status == TextToSpeech.SUCCESS) defaultListener.onSuccess(null);
+                else defaultListener.onFailure(null);
             });
         } else {
-            defaultListener.onSuccess();
+            defaultListener.onSuccess(null);
         }
     }
 
