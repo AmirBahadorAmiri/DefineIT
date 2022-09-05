@@ -16,7 +16,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.pushpole.sdk.PushPole;
@@ -32,7 +31,6 @@ import ir.DEFINEit.tools.dialog_manager.DialogManager;
 import ir.DEFINEit.tools.listeners.DefaultListener;
 import ir.DEFINEit.tools.packager.Packager;
 import ir.DEFINEit.tools.permission_manager.PermissionManager;
-import ir.DEFINEit.tools.user_info.User;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -42,9 +40,6 @@ public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        if (User.isDarkTheme()) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         String version = "نگارش " + Packager.getVersionName(this);

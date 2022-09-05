@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.Toka" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style name="Theme.Toka" parent="Theme.AppCompat.Light.NoActionBar">
 
         <item name="colorPrimary">@color/themePrimaryColor</item>
         <item name="colorPrimaryDark">@color/themePrimaryDarkColor</item>

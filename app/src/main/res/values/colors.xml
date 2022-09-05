@@ -2,11 +2,11 @@
 <resources>
 
 <!--  LIGHT theme color  -->
-    <color name="themeBackgroundColor">#eee</color>
+    <color name="themeBackgroundColor">#f5f5f5</color>
     <color name="themeActionBarColor">#fff</color>
-    <color name="themePrimaryColor">#4F6FFF</color>
-    <color name="themePrimaryDarkColor">#4F5FEE</color>
-    <color name="themeAccentColor">#4F6FFF</color>
+    <color name="themePrimaryColor">#662d90</color>
+    <color name="themePrimaryDarkColor">#400070</color>
+    <color name="themeAccentColor">#662d90</color>
     <color name="themeTextColor">#111</color>
     <color name="themeHintTextColor">#bbb</color>
 

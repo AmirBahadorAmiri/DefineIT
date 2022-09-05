@@ -73,38 +73,4 @@
         app:layout_constraintEnd_toEndOf="@+id/selectGenderView"
         app:layout_constraintTop_toBottomOf="@+id/selectGenderView_title" />
 
-    <View
-        android:id="@+id/selectThemeView"
-        style="@style/Widget.AppCompat.ImageButton"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/standard_60dp"
-        android:layout_marginEnd="@dimen/standard_8dp"
-        android:backgroundTint="@color/themeBackgroundColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectGenderView" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/selectThemeView_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/standard_16dp"
-        android:text="@string/choose_theme_title"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/selectThemeView_subtitle"
-        app:layout_constraintEnd_toEndOf="@+id/selectThemeView"
-        app:layout_constraintTop_toTopOf="@+id/selectThemeView" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/selectThemeView_subtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/standard_16dp"
-        android:text="@string/choose_theme_subtitle"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toBottomOf="@+id/selectThemeView"
-        app:layout_constraintEnd_toEndOf="@+id/selectThemeView"
-        app:layout_constraintTop_toBottomOf="@+id/selectThemeView_title" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
