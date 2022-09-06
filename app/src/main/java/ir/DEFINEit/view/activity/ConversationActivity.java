@@ -25,10 +25,6 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -41,12 +37,10 @@ import ir.DEFINEit.tools.dialog_manager.DialogManager;
 import ir.DEFINEit.tools.language_manager.LanguageManager;
 import ir.DEFINEit.tools.listeners.DefaultListener;
 import ir.DEFINEit.tools.tapsell_ads.AdManager;
+import ir.DEFINEit.tools.translate_manager.TranslateManager;
 import ir.DEFINEit.tools.user_info.User;
-import ir.DEFINEit.tools.web_api.WebApi;
 import ir.tapsell.plus.AdShowListener;
 import ir.tapsell.plus.model.TapsellPlusAdModel;
-import okhttp3.ResponseBody;
-import retrofit2.Response;
 
 public class ConversationActivity extends AppCompatActivity {
 
@@ -196,36 +190,22 @@ public class ConversationActivity extends AppCompatActivity {
     }
 
     private void googleTranslate() {
+
         TextModel model = new TextModel();
         model.setText(Objects.requireNonNull(conversation_editText.getText()).toString());
         model.setFromLanguageCode(LanguageManager.getFromLangaugeCode());
         model.setToLanguageCode(LanguageManager.getToLangaugeCode());
         model.setTranslationTime(System.currentTimeMillis());
         conversation_editText.setText("");
-        WebApi.translateText(model.getText(), new DefaultListener() {
+
+        TranslateManager.translateBy(TranslateManager.GOOGLE_TRANSLATE, model.getText(), new DefaultListener() {
             @Override
             public void onSuccess(Object obj) {
-                try {
-                    if (((Response<ResponseBody>) obj).body() != null) {
-                        String result = ((Response<ResponseBody>) obj).body().string();
-                        JSONArray object = new JSONArray(result);
-                        JSONArray object_0 = object.getJSONArray(0);
-                        JSONArray object_1 = object_0.getJSONArray(0);
-                        StringBuilder sb = new StringBuilder();
-                        sb.append(object_1.getString(0));
-                        if (!object_0.isNull(1)) {
-                            if (!object_0.getJSONArray(1).isNull(0)) {
-                                sb.append(object_0.getJSONArray(1).getString(0));
-                            }
-                        }
-                        model.setTranslation(sb.toString());
-                        conversationList.add(model);
-                        conversationAdapter.notifyItemInserted(conversationList.size() - 1);
-                        conversation_recyclerView.scrollToPosition(conversationList.size() - 1);
-                    }
-                } catch (IOException | JSONException e) {
-                    Toast.makeText(ConversationActivity.this, "متاسفانه مشکلی در برقراری ارتباط پیش آمد", Toast.LENGTH_SHORT).show();
-                }
+                String translated_text = String.valueOf(obj);
+                model.setTranslation(translated_text);
+                conversationList.add(model);
+                conversationAdapter.notifyItemInserted(conversationList.size() - 1);
+                conversation_recyclerView.scrollToPosition(conversationList.size() - 1);
             }
 
             @Override
@@ -233,6 +213,7 @@ public class ConversationActivity extends AppCompatActivity {
                 Toast.makeText(ConversationActivity.this, "متاسفانه مشکلی در برقراری ارتباط پیش آمد", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     @Override

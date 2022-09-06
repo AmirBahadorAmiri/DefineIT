@@ -33,7 +33,7 @@ public class AdManager {
 
                     @Override
                     public void error(String message) {
-                        defaultListener.onFailure(null);
+                        defaultListener.onFailure(message);
                     }
                 });
     }

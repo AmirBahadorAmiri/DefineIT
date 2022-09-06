@@ -32,10 +32,6 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -52,16 +48,14 @@ import ir.DEFINEit.tools.language_manager.LanguageManager;
 import ir.DEFINEit.tools.listeners.DefaultListener;
 import ir.DEFINEit.tools.sound_volume.VolumeManager;
 import ir.DEFINEit.tools.tapsell_ads.AdManager;
+import ir.DEFINEit.tools.translate_manager.TranslateManager;
 import ir.DEFINEit.tools.tts.TTsSingle;
 import ir.DEFINEit.tools.user_info.User;
-import ir.DEFINEit.tools.web_api.WebApi;
 import ir.DEFINEit.view.activity.ChangeLanguageActivity;
 import ir.DEFINEit.view.activity.ConversationActivity;
 import ir.DEFINEit.view.activity.TranslateHistoryActivity;
 import ir.tapsell.plus.AdShowListener;
 import ir.tapsell.plus.model.TapsellPlusAdModel;
-import okhttp3.ResponseBody;
-import retrofit2.Response;
 
 public class TranslateFragment extends Fragment {
 
@@ -269,65 +263,46 @@ public class TranslateFragment extends Fragment {
     }
 
     private void googleTranslate() {
-        WebApi.translateText(Objects.requireNonNull(translated_editText.getText()).toString(), new DefaultListener() {
+
+        TranslateManager.translateBy(TranslateManager.GOOGLE_TRANSLATE, Objects.requireNonNull(translated_editText.getText()).toString(), new DefaultListener() {
             @Override
             public void onSuccess(Object obj) {
-                try {
-                    if (((Response<ResponseBody>) obj).body() != null) {
 
-                        String result = ((Response<ResponseBody>) obj).body().string();
-                        JSONArray object = new JSONArray(result);
-                        JSONArray object_0 = object.getJSONArray(0);
-                        JSONArray object_1 = object_0.getJSONArray(0);
-                        StringBuilder sb = new StringBuilder();
+                translated_scrollView.setVisibility(View.VISIBLE);
+                copy_text.setVisibility(View.VISIBLE);
+                share_text.setVisibility(View.VISIBLE);
+                mic_logo.setVisibility(View.VISIBLE);
 
-                        translated_scrollView.setVisibility(View.VISIBLE);
-                        copy_text.setVisibility(View.VISIBLE);
-                        share_text.setVisibility(View.VISIBLE);
-                        mic_logo.setVisibility(View.VISIBLE);
+                String translated_text = String.valueOf(obj);
 
-                        sb.append(object_1.getString(0));
-                        if (!object_0.isNull(1)) {
-                            if (!object_0.getJSONArray(1).isNull(0)) {
-                                sb.append(object_0.getJSONArray(1).getString(0));
+                translated_result.setText(translated_text);
+
+                TextModel textModel = new TextModel();
+                textModel.setText(translated_editText.getText().toString());
+                textModel.setTranslation(translated_text);
+                textModel.setTranslationTime(System.currentTimeMillis());
+                textModel.setFromLanguageCode(LanguageManager.getFromLangaugeCode());
+                textModel.setToLanguageCode(LanguageManager.getToLangaugeCode());
+
+                DBM.getDB(requireActivity()).getSentenceDao()
+                        .insert(textModel)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new CompletableObserver() {
+                            @Override
+                            public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
                             }
-                        }
 
-                        translated_result.setText(sb.toString());
+                            @Override
+                            public void onComplete() {
+                            }
 
-                        TextModel textModel = new TextModel();
-                        textModel.setText(translated_editText.getText().toString());
-                        textModel.setTranslation(sb.toString());
-                        textModel.setTranslationTime(System.currentTimeMillis());
-                        textModel.setFromLanguageCode(LanguageManager.getFromLangaugeCode());
-                        textModel.setToLanguageCode(LanguageManager.getToLangaugeCode());
+                            @Override
+                            public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+                                Log.d("TAG", "onError: " + e.getMessage());
+                            }
+                        });
 
-                        DBM.getDB(requireActivity()).getSentenceDao()
-                                .insert(textModel)
-                                .subscribeOn(Schedulers.io())
-                                .observeOn(AndroidSchedulers.mainThread())
-                                .subscribe(new CompletableObserver() {
-                                    @Override
-                                    public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
-                                    }
-
-                                    @Override
-                                    public void onComplete() {
-                                    }
-
-                                    @Override
-                                    public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
-                                        Log.d("TAG", "onError: " + e.getMessage());
-                                    }
-                                });
-
-                    }
-                } catch (IOException | JSONException e) {
-                    translated_scrollView.setVisibility(View.INVISIBLE);
-                    copy_text.setVisibility(View.INVISIBLE);
-                    share_text.setVisibility(View.INVISIBLE);
-                    Toast.makeText(requireContext(), "متاسفانه مشکلی در برقراری ارتباط پیش آمد", Toast.LENGTH_SHORT).show();
-                }
             }
 
             @Override
