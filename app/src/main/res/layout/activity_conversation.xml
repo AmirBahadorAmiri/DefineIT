@@ -29,7 +29,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/translate_from"
-        style="@style/Widget.AppCompat.Button.Borderless"
+        android:background="@android:color/transparent"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/translate_reverse_language"
@@ -40,7 +40,7 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/translate_reverse_language"
-        style="@style/Widget.AppCompat.Button.Borderless"
+        android:background="@android:color/transparent"
         android:layout_width="@dimen/standard_40dp"
         android:layout_height="0dp"
         android:src="@drawable/ic_round_arrow_right"
@@ -52,7 +52,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/translate_to"
-        style="@style/Widget.AppCompat.Button.Borderless"
+        android:background="@android:color/transparent"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/translate_reverse_language"
@@ -111,7 +111,7 @@
             android:layout_marginEnd="@dimen/standard_8dp"
             android:layout_weight="1"
             android:padding="@dimen/standard_8dp"
-            android:backgroundTint="@color/themeActionBarColor"
+            android:background="@android:color/transparent"
             android:tint="@color/themeAccentColor"
             app:srcCompat="@drawable/ic_round_mic" />
 

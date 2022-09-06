@@ -106,7 +106,7 @@ public class TranslateFragment extends Fragment {
 
             if (VolumeManager.getVolume(requireContext()) == 0) {
                 Snackbar.make(v, "صدای سیستم قطع است", Snackbar.LENGTH_LONG)
-                        .setAction("افزایش صدا", n -> VolumeManager.setVolume(requireContext(), VolumeManager.getManager(requireContext()).getStreamMaxVolume(AudioManager.STREAM_MUSIC))).setTextColor(getResources().getColor(R.color.white)).show();
+                        .setAction("افزایش صدا", n -> VolumeManager.setVolume(requireContext(), VolumeManager.getManager(requireContext()).getStreamMaxVolume(AudioManager.STREAM_MUSIC))).setBackgroundTint(getResources().getColor(R.color.themeActionBarColor)).setTextColor(getResources().getColor(R.color.themeTextColor)).show();
             } else {
 
                 TTsSingle.initialize(requireContext(), new DefaultListener() {

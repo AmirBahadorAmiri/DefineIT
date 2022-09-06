@@ -32,12 +32,13 @@
         android:layout_width="@dimen/standard_40dp"
         android:layout_height="@dimen/standard_40dp"
         android:layout_marginStart="@dimen/standard_8dp"
-        android:backgroundTint="@color/themeActionBarColor"
+        android:background="@android:color/transparent"
         android:src="@drawable/ic_round_delete"
         android:tint="@color/themeAccentColor"
         app:layout_constraintBottom_toBottomOf="@id/setting_action_bar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/translated_recyclerView"

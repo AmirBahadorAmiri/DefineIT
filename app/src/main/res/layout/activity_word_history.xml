@@ -29,7 +29,7 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/delete_history"
-        android:backgroundTint="@color/themeActionBarColor"
+        android:background="@android:color/transparent"
         android:layout_width="@dimen/standard_40dp"
         android:layout_height="@dimen/standard_40dp"
         android:layout_marginStart="@dimen/standard_8dp"

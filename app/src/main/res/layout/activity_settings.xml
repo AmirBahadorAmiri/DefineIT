@@ -41,11 +41,9 @@
 
     <View
         android:id="@+id/selectGenderView"
-        style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="0dp"
         android:layout_height="@dimen/standard_60dp"
         android:layout_marginEnd="@dimen/standard_8dp"
-        android:backgroundTint="@color/themeBackgroundColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setting_subject" />

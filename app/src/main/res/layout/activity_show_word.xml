@@ -34,7 +34,7 @@
         android:layout_height="@dimen/standard_40dp"
         android:layout_marginStart="@dimen/standard_8dp"
         android:layout_marginTop="@dimen/standard_8dp"
-        android:backgroundTint="@color/themeActionBarColor"
+        android:background="@android:color/transparent"
         android:tint="@color/themeAccentColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -42,7 +42,7 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/settings"
-        android:backgroundTint="@color/themeActionBarColor"
+        android:background="@android:color/transparent"
         android:layout_width="@dimen/standard_40dp"
         android:layout_height="@dimen/standard_40dp"
         android:layout_marginTop="@dimen/standard_8dp"
@@ -53,7 +53,7 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/send_speakLogo"
-        android:backgroundTint="@color/themeActionBarColor"
+        android:background="@android:color/transparent"
         android:layout_width="@dimen/standard_40dp"
         android:layout_height="@dimen/standard_40dp"
         android:layout_marginTop="@dimen/standard_8dp"
@@ -65,7 +65,7 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/copyLogo"
-        android:backgroundTint="@color/themeActionBarColor"
+        android:background="@android:color/transparent"
         android:layout_width="@dimen/standard_40dp"
         android:layout_height="@dimen/standard_40dp"
         android:layout_marginTop="@dimen/standard_8dp"

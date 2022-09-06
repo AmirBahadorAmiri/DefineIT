@@ -33,7 +33,6 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/apply"
-            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/msg_dialog_textView"
@@ -41,20 +40,21 @@
             android:layout_centerInParent="true"
             android:layout_marginEnd="@dimen/standard_16dp"
             android:layout_marginBottom="@dimen/standard_16dp"
-            android:textColor="@color/themeAccentColor"
-            android:text="@string/apply" />
+            android:background="@android:color/transparent"
+            android:text="@string/apply"
+            android:textColor="@color/themeAccentColor" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/dismiss"
-            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/msg_dialog_textView"
             android:layout_marginEnd="@dimen/standard_8dp"
             android:layout_marginBottom="@dimen/standard_16dp"
             android:layout_toLeftOf="@id/apply"
-            android:textColor="@color/themeAccentColor"
-            android:text="@string/dismiss" />
+            android:background="@android:color/transparent"
+            android:text="@string/dismiss"
+            android:textColor="@color/themeAccentColor" />
 
     </RelativeLayout>
 

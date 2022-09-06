@@ -12,7 +12,7 @@
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:backgroundTint="@color/themeActionBarColor"
-    app:cardCornerRadius="@dimen/standard_8dp"
+    app:cardCornerRadius="@dimen/standard_20dp"
     tools:targetApi="lollipop">
 
     <RelativeLayout
@@ -45,7 +45,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/apply"
-            style="@style/Widget.AppCompat.Button.Borderless"
+            android:background="@android:color/transparent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -53,20 +53,20 @@
             android:layout_centerInParent="true"
             android:layout_marginEnd="@dimen/standard_16dp"
             android:layout_marginBottom="@dimen/standard_16dp"
-            android:textColor="@color/themeAccentColor"
-            android:text="@string/apply" />
+            android:text="@string/apply"
+            android:textColor="@color/themeAccentColor" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/dismiss"
-            style="@style/Widget.AppCompat.Button.Borderless"
+            android:background="@android:color/transparent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="@dimen/standard_8dp"
             android:layout_marginBottom="@dimen/standard_16dp"
-            android:textColor="@color/themeAccentColor"
             android:layout_toLeftOf="@id/apply"
-            android:text="@string/dismiss" />
+            android:text="@string/dismiss"
+            android:textColor="@color/themeAccentColor" />
 
     </RelativeLayout>
 

@@ -3,15 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="70dp"
+    android:layout_height="80dp"
     android:layout_marginStart="@dimen/standard_4dp"
     android:layout_marginTop="@dimen/standard_2dp"
     android:layout_marginEnd="@dimen/standard_4dp"
     android:layout_marginBottom="@dimen/standard_2dp"
-    android:backgroundTint="@color/themeActionBarColor"
-    android:foreground="?selectableItemBackground"
+    android:background="@color/themeActionBarColor"
     android:orientation="horizontal"
-    app:cardCornerRadius="@dimen/standard_12dp"
+    app:cardCornerRadius="@dimen/standard_20dp"
     tools:targetApi="lollipop">
 
     <androidx.appcompat.widget.LinearLayoutCompat
