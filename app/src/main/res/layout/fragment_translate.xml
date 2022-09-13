@@ -26,8 +26,8 @@
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatButton
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:id="@+id/translate_from"
-                android:background="@android:color/transparent"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -35,16 +35,16 @@
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/translate_reverse_language"
-                android:background="@android:color/transparent"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/ic_round_arrow_right"
-                android:tint="@color/themeAccentColor" />
+                android:tint="?colorAccent" />
 
             <androidx.appcompat.widget.AppCompatButton
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:id="@+id/translate_to"
-                android:background="@android:color/transparent"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -73,7 +73,7 @@
                     android:layout_width="@dimen/standard_40dp"
                     android:layout_height="@dimen/standard_40dp"
                     android:src="@drawable/ic_round_clear"
-                    android:tint="@color/themeAccentColor"
+                    android:tint="?colorAccent"
                     android:visibility="gone" />
 
                 <androidx.appcompat.widget.AppCompatEditText
@@ -91,12 +91,12 @@
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatImageButton
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:id="@+id/send_speakLogo"
-                android:background="@android:color/transparent"
                 android:layout_width="@dimen/standard_40dp"
                 android:layout_height="@dimen/standard_40dp"
                 android:src="@drawable/ic_round_mic"
-                android:tint="@color/themeAccentColor" />
+                android:tint="?colorAccent" />
 
         </LinearLayout>
 
@@ -115,25 +115,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageButton
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/historyLogo"
-        android:background="@android:color/transparent"
         android:layout_width="@dimen/standard_40dp"
         android:layout_height="@dimen/standard_40dp"
         android:layout_marginStart="@dimen/standard_8dp"
         android:layout_marginTop="10.5dp"
         android:src="@drawable/ic_round_history"
-        android:tint="@color/themeAccentColor"
+        android:tint="?colorAccent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linear_1" />
 
     <androidx.appcompat.widget.AppCompatImageButton
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/conversationLogo"
-        android:background="@android:color/transparent"
         android:layout_width="@dimen/standard_40dp"
         android:layout_height="@dimen/standard_40dp"
         android:layout_marginStart="@dimen/standard_8dp"
         android:src="@drawable/ic_round_conversation"
-        android:tint="@color/themeAccentColor"
+        android:tint="?colorAccent"
         app:layout_constraintStart_toEndOf="@id/historyLogo"
         app:layout_constraintTop_toTopOf="@+id/historyLogo" />
 
@@ -169,37 +169,37 @@
     </ScrollView>
 
     <androidx.appcompat.widget.AppCompatImageButton
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/mic_logo"
-        android:background="@android:color/transparent"
         android:layout_width="@dimen/standard_40dp"
         android:layout_height="@dimen/standard_40dp"
         android:layout_margin="@dimen/standard_8dp"
         android:src="@drawable/ic_round_volume"
-        android:tint="@color/themeAccentColor"
+        android:tint="?colorAccent"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/translated_scrollView" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/copy_text"
-        android:background="@android:color/transparent"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="@dimen/standard_40dp"
         android:layout_height="@dimen/standard_40dp"
         android:layout_margin="@dimen/standard_8dp"
         android:src="@drawable/ic_round_copy"
-        android:tint="@color/themeAccentColor"
+        android:tint="?colorAccent"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/mic_logo" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/share_text"
-        android:background="@android:color/transparent"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="@dimen/standard_40dp"
         android:layout_height="@dimen/standard_40dp"
         android:layout_margin="@dimen/standard_8dp"
         android:src="@drawable/ic_round_share"
-        android:tint="@color/themeAccentColor"
+        android:tint="?colorAccent"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/copy_text" />

@@ -1,15 +1,15 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <style name="Theme.Toka" parent="Theme.AppCompat.Light.NoActionBar">
 
-        <item name="colorPrimary">@color/themePrimaryColor</item>
-        <item name="colorPrimaryDark">@color/themePrimaryDarkColor</item>
-        <item name="colorAccent">@color/themeAccentColor</item>
+        <item name="colorPrimary">@color/material_blue_2</item>
+        <item name="colorPrimaryDark">@color/material_blue_3</item>
+        <item name="colorAccent">@color/material_blue_2</item>
         <item name="android:windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
-        <item name="android:textColor">@color/themeTextColor</item>
-        <item name="android:textColorHint">@color/themeHintTextColor</item>
+        <item name="android:textColor">@color/material_dark_2</item>
+        <item name="android:textColorHint">@color/material_alpha_2</item>
         <!--        <item name="android:navigationBarColor">@color/black</item>-->
         <!--        <item name="android:windowDisablePreview">true</item>-->
 

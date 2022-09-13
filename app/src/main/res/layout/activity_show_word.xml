@@ -29,47 +29,47 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageButton
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/wordTagged"
         android:layout_width="@dimen/standard_40dp"
         android:layout_height="@dimen/standard_40dp"
         android:layout_marginStart="@dimen/standard_8dp"
         android:layout_marginTop="@dimen/standard_8dp"
-        android:background="@android:color/transparent"
-        android:tint="@color/themeAccentColor"
+        android:tint="?colorAccent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/ic_round_unfavorite" />
 
     <androidx.appcompat.widget.AppCompatImageButton
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/settings"
-        android:background="@android:color/transparent"
         android:layout_width="@dimen/standard_40dp"
         android:layout_height="@dimen/standard_40dp"
         android:layout_marginTop="@dimen/standard_8dp"
-        android:tint="@color/themeAccentColor"
+        android:tint="?colorAccent"
         app:layout_constraintStart_toEndOf="@id/wordTagged"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_round_settings" />
 
     <androidx.appcompat.widget.AppCompatImageButton
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/send_speakLogo"
-        android:background="@android:color/transparent"
         android:layout_width="@dimen/standard_40dp"
         android:layout_height="@dimen/standard_40dp"
         android:layout_marginTop="@dimen/standard_8dp"
-        android:tint="@color/themeAccentColor"
+        android:tint="?colorAccent"
         app:layout_constraintEnd_toEndOf="@+id/wordTagged"
         app:layout_constraintStart_toStartOf="@+id/wordTagged"
         app:layout_constraintTop_toBottomOf="@+id/wordTagged"
         app:srcCompat="@drawable/ic_round_volume" />
 
     <androidx.appcompat.widget.AppCompatImageButton
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/copyLogo"
-        android:background="@android:color/transparent"
         android:layout_width="@dimen/standard_40dp"
         android:layout_height="@dimen/standard_40dp"
         android:layout_marginTop="@dimen/standard_8dp"
-        android:tint="@color/themeAccentColor"
+        android:tint="?colorAccent"
         app:layout_constraintEnd_toEndOf="@+id/send_speakLogo"
         app:layout_constraintStart_toStartOf="@+id/send_speakLogo"
         app:layout_constraintTop_toBottomOf="@+id/send_speakLogo"

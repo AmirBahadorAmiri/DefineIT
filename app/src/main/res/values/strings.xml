@@ -21,8 +21,8 @@
     <string name="word_tagged">کلمات ستاره دار</string>
     <string name="developer">امیربهادر امیری | AmirBahador Amiri</string>
     <string name="developer_gmail">bahadoramiri.report@gmail.com</string>
-    <string name="apply">تایید</string>
-    <string name="dismiss">لغو</string>
+    <string name="apply">بله</string>
+    <string name="dismiss">خیر</string>
     <string name="support_app">حمایت از ما</string>
     <string name="choose_app">انتخاب برنامه مورد نظر …</string>
 

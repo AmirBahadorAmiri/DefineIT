@@ -68,8 +68,7 @@ public class MeFragment extends Fragment {
 
     private void start() {
         settings.setOnClickListener(n -> startActivity(new Intent(requireActivity(), SettingsActivity.class)));
-        String version = "نگارش " + Packager.getVersionName(requireContext());
-        versionInfo.setText(version);
+        versionInfo.setText(Packager.getVersionName(requireContext()));
         developer_gmail.setOnClickListener(view -> bugDialog());
         support_app.setOnClickListener(v -> AdManager.requestAd(requireActivity(), new DefaultListener() {
             @Override

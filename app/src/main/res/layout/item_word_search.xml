@@ -5,12 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/standard_4dp"
+    android:layout_marginStart="@dimen/standard_8dp"
     android:layout_marginTop="@dimen/standard_2dp"
-    android:layout_marginEnd="@dimen/standard_4dp"
+    android:layout_marginEnd="@dimen/standard_8dp"
     android:layout_marginBottom="@dimen/standard_2dp"
     android:background="@color/themeActionBarColor"
     app:cardCornerRadius="@dimen/standard_20dp"
+    android:foreground="?selectableItemBackground"
+    app:cardElevation="0dp"
     tools:targetApi="lollipop">
 
     <androidx.appcompat.widget.LinearLayoutCompat

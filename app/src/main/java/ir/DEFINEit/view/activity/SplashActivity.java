@@ -42,8 +42,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        String version = "نگارش " + Packager.getVersionName(this);
-        ((AppCompatTextView) findViewById(R.id.txt_version)).setText(version);
+        ((AppCompatTextView) findViewById(R.id.txt_version)).setText(Packager.getVersionName(this));
 
         //noinspection ResultOfMethodCallIgnored
         Observable.timer(1000, TimeUnit.MILLISECONDS)

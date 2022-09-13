@@ -28,13 +28,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageButton
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/delete_history"
-        android:background="@android:color/transparent"
         android:layout_width="@dimen/standard_40dp"
         android:layout_height="@dimen/standard_40dp"
         android:layout_marginStart="@dimen/standard_8dp"
         android:src="@drawable/ic_round_delete"
-        android:tint="@color/themeAccentColor"
+        android:tint="?colorAccent"
         app:layout_constraintBottom_toBottomOf="@id/setting_action_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

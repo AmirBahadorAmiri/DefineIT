@@ -2,6 +2,6 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:state_selected="false" android:color="@color/material_dark_1" />
-    <item android:state_selected="true" android:color="@color/themeAccentColor" />
+    <item android:state_selected="true" android:color="?colorAccent" />
 
 </selector>

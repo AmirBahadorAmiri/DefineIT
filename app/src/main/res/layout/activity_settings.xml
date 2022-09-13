@@ -41,6 +41,7 @@
 
     <View
         android:id="@+id/selectGenderView"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
         android:layout_height="@dimen/standard_60dp"
         android:layout_marginEnd="@dimen/standard_8dp"

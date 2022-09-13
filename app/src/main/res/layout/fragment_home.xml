@@ -19,7 +19,6 @@
         android:backgroundTint="@color/themeActionBarColor"
         android:gravity="center_vertical"
         android:hint="@string/search_word"
-        android:paddingStart="48dp"
         android:paddingEnd="@dimen/standard_8dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,17 +26,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageButton
+        android:layout_marginStart="@dimen/standard_4dp"
         android:id="@+id/send_speakLogo"
         android:layout_width="@dimen/standard_40dp"
         android:layout_height="0dp"
-        android:background="@android:color/transparent"
-        android:tint="@color/themeAccentColor"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:tint="?colorAccent"
         app:layout_constraintBottom_toBottomOf="@+id/search_editText"
         app:layout_constraintStart_toStartOf="@+id/search_editText"
         app:layout_constraintTop_toTopOf="@+id/search_editText"
         app:srcCompat="@drawable/ic_round_mic" />
 
     <androidx.cardview.widget.CardView
+        android:foreground="?selectableItemBackground"
         android:id="@+id/main_fragment_cardview_translate"
         android:layout_width="0dp"
         android:layout_height="100dp"
@@ -81,6 +82,7 @@
         android:layout_height="100dp"
         android:layout_marginStart="@dimen/standard_4dp"
         android:layout_marginTop="@dimen/standard_8dp"
+        android:foreground="?selectableItemBackground"
         android:layout_marginEnd="@dimen/standard_8dp"
         android:backgroundTint="@color/themeActionBarColor"
         app:cardCornerRadius="@dimen/standard_20dp"
@@ -118,6 +120,7 @@
         android:id="@+id/main_fragment_cardview_conversation"
         android:layout_width="0dp"
         android:layout_height="100dp"
+        android:foreground="?selectableItemBackground"
         android:layout_marginStart="@dimen/standard_8dp"
         android:layout_marginTop="@dimen/standard_8dp"
         android:layout_marginEnd="@dimen/standard_8dp"
