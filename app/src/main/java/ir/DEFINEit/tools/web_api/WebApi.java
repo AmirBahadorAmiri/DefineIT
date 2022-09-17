@@ -18,8 +18,8 @@ import retrofit2.Response;
 
 public class WebApi {
 
-    public static void translateText(String text, DefaultListener defaultListener) {
-        WebConfig.getRetrofitInterfaces().translateText(
+    public static void translateByGoogle(String text, DefaultListener defaultListener) {
+        WebConfig.getRetrofitInterfaces().translateByGoogle(
                 "https://translate.googleapis.com/translate_a/single", "gtx", LanguageManager.getFromLangaugeCode(),
                 LanguageManager.getToLangaugeCode(), "t", text,
                 "UTF-8", "UTF-8").enqueue(new Callback<ResponseBody>() {
@@ -35,76 +35,43 @@ public class WebApi {
         });
     }
 
+    public static void translateByYandex(String text, DefaultListener defaultListener) {
 
-//    public static void loginAppVersion(Context context, DefaultListener defaultListener) {
-//        WebConfig.getRetrofitInterfaces().loginAppVersion("http://192.168.43.10/web/toka/versionControl.php",
-//                Packager.getVersionCode(context),Packager.getVersionName(context)).enqueue(new Callback<ResponseBody>() {
-//            @Override
-//            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
-//                defaultListener.onSuccess(response);
-//            }
-//
-//            @Override
-//            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-//                defaultListener.onFailure(t);
-//            }
-//        });
-//    }
-//
-//    public static void loginUserNumber(String number, String password, DefaultListener defaultListener) {
-//        WebConfig.getRetrofitInterfaces().loginUserNumber("http://192.168.43.10/web/toka/userNumberLogin.php", number, password).enqueue(new Callback<ResponseBody>() {
-//            @Override
-//            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
-//                defaultListener.onSuccess(response);
-//            }
-//
-//            @Override
-//            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-//                defaultListener.onFailure(t);
-//            }
-//        });
-//    }
-//
-//    public static void loginUserEmail(String email, String password, DefaultListener defaultListener) {
-//        WebConfig.getRetrofitInterfaces().loginUserEmail("http://192.168.43.10/web/toka/userEmailLogin.php", email, password).enqueue(new Callback<ResponseBody>() {
-//            @Override
-//            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
-//                defaultListener.onSuccess(response);
-//            }
-//
-//            @Override
-//            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-//                defaultListener.onFailure(t);
-//            }
-//        });
-//    }
-//
-//    public static void createUserAccount(String email,String number,String namefamily,String password, DefaultListener defaultListener) {
-//        WebConfig.getRetrofitInterfaces().createUserAccount("http://192.168.43.10/web/toka/userCreateAccount.php",email,number,namefamily,password).enqueue(new Callback<ResponseBody>() {
-//            @Override
-//            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//                defaultListener.onSuccess(response);
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseBody> call, Throwable t) {
-//                defaultListener.onFailure(t);
-//            }
-//        });
-//    }
-//
-//    public static void getUserInfo(String token, String password, DefaultListener defaultListener) {
-//        WebConfig.getRetrofitInterfaces().getUserInfo("http://192.168.43.10/web/toka/userGetInformation.php",token,password).enqueue(new Callback<ResponseBody>() {
-//            @Override
-//            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//                defaultListener.onSuccess(response);
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseBody> call, Throwable t) {
-//                defaultListener.onFailure(t);
-//            }
-//        });
-//    }
+        String sb = "lang=" + LanguageManager.getFromLangaugeCode() + "-" +
+                LanguageManager.getToLangaugeCode() + "&text=" + text;
+
+        WebConfig.getRetrofitInterfaces().translateByYandex("", "4b90eaa326954760990ab007b02b0318-44-0",
+                "android", "application/x-www-form-urlencoded", sb).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                defaultListener.onSuccess(response);
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable throwable) {
+                defaultListener.onFailure(throwable);
+            }
+        });
+    }
+
+    public static void translateByMicrosoft(String text, DefaultListener defaultListener) {
+
+        String sb = "[{\"Text\": \"" + text + "\"}]";
+
+        WebConfig.getRetrofitInterfaces().translateByMicrosoft("api.cognitive.microsofttranslator.com",
+                        "3.0", LanguageManager.getFromLangaugeCode(),
+                        LanguageManager.getToLangaugeCode(), sb)
+                .enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        defaultListener.onSuccess(response);
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        defaultListener.onFailure(t);
+                    }
+                });
+    }
 
 }

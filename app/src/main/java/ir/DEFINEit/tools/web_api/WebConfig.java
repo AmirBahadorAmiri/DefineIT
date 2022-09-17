@@ -10,7 +10,10 @@ package ir.DEFINEit.tools.web_api;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 import retrofit2.http.Url;
 
@@ -31,62 +34,22 @@ public class WebConfig {
     public interface RetrofitInterfaces {
 
         @GET
-        Call<ResponseBody> translateText(@Url String url,
-                                         @Query("client") String client, @Query("sl") String from,
-                                         @Query("tl") String to, @Query("dt") String dt,
-                                         @Query("q") String text, @Query("ie") String ie,
-                                         @Query("oe") String oe);
+        Call<ResponseBody> translateByGoogle(@Url String url,
+                                             @Query("client") String client, @Query("sl") String from,
+                                             @Query("tl") String to, @Query("dt") String dt,
+                                             @Query("q") String text, @Query("ie") String ie,
+                                             @Query("oe") String oe);
 
-//
-//        @GET
-//        Call<ResponseBody> loginAppVersion(@Url String url,
-//                                           @Query("versioncode") int versionCode,
-//                                           @Query("versionname") String versionName);
-//
-//        @GET
-//        Call<ResponseBody> loginUserNumber(@Url String url,
-//                                           @Query("user_number") String user_number,
-//                                           @Query("user_password") String user_password);
-//
-//        @GET
-//        Call<ResponseBody> loginUserEmail(@Url String url,
-//                                          @Query("user_email") String user_email,
-//                                          @Query("user_password") String user_password);
-//
-//        @GET
-//        Call<ResponseBody> getUserInfo(@Url String url,
-//                                       @Query("user_token") String user_token,
-//                                       @Query("user_password") String user_password);
-//
-//        @GET
-//        Call<ResponseBody> createUserAccount(@Url String url,
-//                                             @Query("user_email") String user_email,
-//                                             @Query("user_number") String user_number,
-//                                             @Query("user_namefamily") String user_namefamily,
-//                                             @Query("user_password") String user_password);
-//
-//
-//        @GET
-//        Call<ResponseBody> changeUserStatus(@Url String url,
-//                                            @Query("user_token") String user_token,
-//                                            @Query("user_status") String user_status,
-//                                            @Query("user_password") String user_password);
-//
-//
-//        @GET
-//        Call<ResponseBody> changeUserInfo(@Url String url,
-//                                          @Query("user_token") String user_token,
-//                                          @Query("user_email") String user_email,
-//                                          @Query("user_namefamily") String user_namefamily,
-//                                          @Query("user_number") String user_number,
-//                                          @Query("user_password") String user_password);
-//
-//
-//        @GET
-//        Call<ResponseBody> changeUserPassword(@Url String url,
-//                                          @Query("user_token") String user_token,
-//                                          @Query("user_password") String user_password,
-//                                          @Query("user_newpassword") String user_newpassword);
+        @POST
+        Call<ResponseBody> translateByYandex(@Url String url,
+                                             @Query("id") String id, @Query("srv") String srv,
+                                             @Header("Content=Type") String content_type,
+                                             @Body String body);
+
+        @POST
+        Call<ResponseBody> translateByMicrosoft(@Url String url,
+                                                String api_version, String from,
+                                                String to, @Body String Body);
 
     }
 }
