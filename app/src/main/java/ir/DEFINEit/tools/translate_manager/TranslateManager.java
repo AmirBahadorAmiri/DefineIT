@@ -4,6 +4,7 @@ import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -22,7 +23,7 @@ public class TranslateManager {
 
         if (translator == GOOGLE_TRANSLATE) {
 
-            WebApi.translateText(text, new DefaultListener() {
+            WebApi.translateByGoogle(text, new DefaultListener() {
                 @Override
                 public void onSuccess(Object obj) {
                     try {
@@ -38,7 +39,7 @@ public class TranslateManager {
                                     translatedText.append(dynamic_object.getString(0));
                                 }
                             }
-                            Log.d("translated",translatedText.toString());
+                            Log.d("translated", translatedText.toString());
                             defaultListener.onSuccess(translatedText.toString());
                         }
                     } catch (IOException | JSONException e) {
@@ -52,8 +53,56 @@ public class TranslateManager {
                 }
             });
 
+        } else if (translator == YANDEX_TRANSLATE) {
+
+            WebApi.translateByYandex(text, new DefaultListener() {
+                @Override
+                public void onSuccess(Object obj) {
+
+                    try {
+                        String result = ((Response<ResponseBody>) obj).body().string();
+                        JSONObject jsonArray = new JSONObject(result);
+                        if (jsonArray.getInt("code") == 200) {
+                            String translatedText = jsonArray.getString("text");
+                            defaultListener.onSuccess(translatedText);
+                        } else {
+                            defaultListener.onFailure(new Exception("json status code not 200"));
+                        }
+                    } catch (IOException | JSONException e) {
+                        defaultListener.onFailure(e);
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Object obj) {
+                    defaultListener.onFailure(obj);
+                }
+            });
+
+        } else if (translator == MICROSOFT_TRANSLATE) {
+
+            WebApi.translateByMicrosoft(text, new DefaultListener() {
+                @Override
+                public void onSuccess(Object obj) {
+                    try {
+                        String result = ((Response<ResponseBody>) obj).body().string();
+                        JSONArray array = new JSONArray(result);
+                        JSONObject jsonObject = array.getJSONObject(0);
+                        JSONArray jsonArray = jsonObject.getJSONArray("translations");
+                        JSONObject object = jsonArray.getJSONObject(0);
+                        String translatedText = object.getString("text");
+                        defaultListener.onSuccess(translatedText);
+                    } catch (IOException | JSONException e) {
+                        defaultListener.onFailure(e);
+                    }
+                }
+
+                @Override
+                public void onFailure(Object obj) {
+                    defaultListener.onFailure(obj);
+                }
+            });
         }
-
     }
-
 }
