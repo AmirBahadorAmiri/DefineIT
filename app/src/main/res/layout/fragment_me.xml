@@ -52,7 +52,7 @@
         android:id="@+id/me_fragment_app_icon"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/ic_launcher"
         app:layout_constraintBottom_toTopOf="@id/versionInfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

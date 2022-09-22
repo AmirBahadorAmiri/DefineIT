@@ -9,8 +9,8 @@ android {
         applicationId "ir.DEFINEit"
         minSdk 19
         targetSdk 30
-        versionCode 6
-        versionName "v-1.0.5"
+        versionCode 7
+        versionName "v-1.0.6"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
