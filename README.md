@@ -1,1 +1,3 @@
-example project for crate a <b>DICTIONARY APPLICATION</b> <i>'English to Persian'</i> and other Tools
+example project for crate a <b>DICTIONARY APPLICATION</b> <i>'English to Persian'</i> and other Tools<br><br><br>
+یک نمونه سورس نرم افزار مترجم فارسی به انگلیسی به همراه ابزار دیگری همچون مترجم گوگل و ...
+استفاده از این سورس برای همگان آزاد میباشد و تمامی حقوق آن متوجه خود شماست
